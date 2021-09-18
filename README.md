@@ -1,6 +1,11 @@
 # EHPT
 Electric&amp;Hybrid Power Trains
 
+
+*** 
+This library replaces older SMEHV
+***
+
 This repository contains the modelica library "Electric and Hybrid Power Train" that is the basis of a webbook chapter, named "Simplified Modelling of Electric and Hybrid Vehicles" available on 
 http://omwebbook.openmodelica.org/SMEHV
 
@@ -9,7 +14,7 @@ This makes this repository a special type of Modelica library: it is oriented to
 
 Content of the repository:
 - EHPTLib.mo: it is a one-file modelica archive containing all library models
-- EHPTexamples.mo: it is a one-file modelica archive containing many examples of usage of models from wbEHPTLib library
+- EHPTexamples.mo: it is a one-file modelica archive containing many examples of usage of models from EHPTLib 
 - EHPT tutorial.pdf containing a full guide to the usage of all the library models and examples 
 - folder AllTextFiles: contains txt files needed to run several of the library models. Their usage is described in detail in SMEHV tutorial.pdf
 
