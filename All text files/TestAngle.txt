@@ -1,0 +1,8 @@
+#1
+
+# Heading: Ciclo Sort1 come da specifiche BMB
+#prima colonna: tempo, seconda: ciclo (km/h)
+double Cycle(3,2)
+     0.00    0.00  
+      10       10
+      1000	  10

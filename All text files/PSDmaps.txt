@@ -1,0 +1,64 @@
+#1
+
+# genEffTable, motEffTable
+# efficiency - rows:speeds pu, columns:torques pu
+#
+# maxIceTau
+# First column: speed  2nd column: torque
+#
+# specificCons  (=specific consumption)
+# First row: (from column 2) speed  1st column (from row 2): torque  body: spec. consumption.
+#
+# optispeed
+# First column Power (W)  second column optimal speed (rpm)
+
+
+double genEffTable (6,6)
+    0.00  0.00  0.25  0.50  0.75  1.00 
+    0.00  0.75  0.80  0.81  0.82  0.83 
+    0.25  0.76  0.81  0.82  0.83  0.84 
+    0.50  0.77  0.82  0.83  0.84  0.85 
+    0.75  0.78  0.83  0.84  0.85  0.87 
+    1.00  0.80  0.84  0.85  0.86  0.88
+
+double motEffTable (6,6)
+    0.00  0.00  0.25  0.50  0.75  1.00 
+    0.00  0.75  0.80  0.81  0.82  0.83 
+    0.25  0.76  0.81  0.82  0.83  0.84 
+    0.50  0.77  0.82  0.83  0.84  0.85 
+    0.75  0.78  0.83  0.84  0.85  0.87 
+    1.00  0.80  0.84  0.85  0.86  0.88
+
+	
+double maxIceTau (7 2)
+80	380
+100	620
+120	800
+170	800
+220	670
+230	650
+240	570
+
+double iceSpecificCons(10 6)
+ 0.0  100  200  300  400  500 
+ 10   630  580  550  580  630  
+ 20   430  420  400  400  450 
+ 30   320  325  330  340  350 
+ 40   285  285  288  290  300 
+ 50   270  265  265  270  275 
+ 60   255  248  250  255  258 
+ 70   245  237  238  243  246 
+ 80   245  230  233  237  240  
+ 90   235  230  228  233  235
+
+
+double optiSpeed(9 2)
+0          800
+20000      850
+40000     1100
+60000     1250
+80000     1280
+100000    1340
+120000    1400
+140000    1650
+160000    2130

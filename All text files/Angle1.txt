@@ -1,0 +1,12 @@
+#1
+
+# First column: position, second column: angle (rad)
+double Angle(8,2)
+    0.00    0.0
+    100.    0.
+	110.    0.1
+    200.    0.1
+	220.   -0.1
+	300.   -0.1
+	310.    0.0
+	400     0.
