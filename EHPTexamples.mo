@@ -6,20 +6,31 @@
       extends Modelica.Icons.Example;
       Modelica.Electrical.Machines.Utilities.TerminalBox terminalBox annotation (
         Placement(visible = true, transformation(extent = {{4, 14}, {24, 34}}, rotation = 0)));
-      Modelica.Electrical.Machines.BasicMachines.AsynchronousInductionMachines.AIM_SquirrelCage aimc annotation (
-        Placement(visible = true, transformation(extent = {{4, -16}, {24, 4}}, rotation = 0)));
+      Modelica.Electrical.Machines.BasicMachines.InductionMachines.IM_SquirrelCage
+        aimc(alpha20s=0, alpha20r=0)
+             annotation (Placement(visible=true, transformation(extent={{4,-16},
+                {24,4}}, rotation=0)));
       Modelica.Electrical.Analog.Basic.Ground ground annotation (
         Placement(visible = true, transformation(extent = {{-98, -36}, {-78, -16}}, rotation = 0)));
-      Modelica.Electrical.MultiPhase.Basic.Star star annotation (
-        Placement(visible = true, transformation(origin = {-88, 8}, extent = {{-10, -10}, {10, 10}}, rotation = 270)));
+      Modelica.Electrical.Polyphase.Basic.Star star annotation (Placement(
+            visible=true, transformation(
+            origin={-88,8},
+            extent={{-10,-10},{10,10}},
+            rotation=270)));
       EHPTlib.SupportModels.Miscellaneous.AronSensor pUp annotation (
         Placement(visible = true, transformation(extent = {{-38, 14}, {-20, 32}}, rotation = 0)));
-      Modelica.Electrical.MultiPhase.Sources.SignalVoltage signalV annotation (
-        Placement(visible = true, transformation(origin = {-58, 23}, extent = {{-10, -9}, {10, 9}}, rotation = 180)));
+      Modelica.Electrical.Polyphase.Sources.SignalVoltage signalV annotation (
+          Placement(visible=true, transformation(
+            origin={-58,23},
+            extent={{-10,-9},{10,9}},
+            rotation=180)));
       Modelica.Mechanics.Rotational.Sensors.SpeedSensor speedSensor annotation (
         Placement(visible = true, transformation(origin = {61, -25}, extent = {{-7, -7}, {7, 7}}, rotation = 270)));
-      Modelica.Electrical.MultiPhase.Sensors.CurrentSensor iUp annotation (
-        Placement(visible = true, transformation(origin = {-6, 40}, extent = {{-8, -8}, {8, 8}}, rotation = 0)));
+      Modelica.Electrical.Polyphase.Sensors.CurrentSensor iUp annotation (
+          Placement(visible=true, transformation(
+            origin={-6,40},
+            extent={{-8,-8},{8,8}},
+            rotation=0)));
       Modelica.Mechanics.Rotational.Components.Inertia inertia(J = 0.5) annotation (
         Placement(visible = true, transformation(extent = {{34, -16}, {54, 4}}, rotation = 0)));
       EHPTlib.ElectricDrives.ASMArelated.ControlLogic logic(Rr = aimc.Rr, Rs = aimc.Rs, wmMax = 314.16 / 2, uBase = 100 * sqrt(3), Lstray = aimc.Lssigma + aimc.Lrsigma, pp = aimc.p) annotation (
@@ -90,20 +101,30 @@
       extends Modelica.Icons.Example;
       Modelica.Electrical.Machines.Utilities.TerminalBox terminalBox annotation (
         Placement(visible = true, transformation(extent = {{4, 14}, {24, 34}}, rotation = 0)));
-      Modelica.Electrical.Machines.BasicMachines.AsynchronousInductionMachines.AIM_SquirrelCage aimc annotation (
-        Placement(visible = true, transformation(extent = {{4, -16}, {24, 4}}, rotation = 0)));
+      Modelica.Electrical.Machines.BasicMachines.InductionMachines.IM_SquirrelCage
+        aimc annotation (Placement(visible=true, transformation(extent={{4,-16},
+                {24,4}}, rotation=0)));
       Modelica.Electrical.Analog.Basic.Ground ground annotation (
         Placement(visible = true, transformation(extent = {{-98, -36}, {-78, -16}}, rotation = 0)));
-      Modelica.Electrical.MultiPhase.Basic.Star star annotation (
-        Placement(visible = true, transformation(origin = {-88, 8}, extent = {{-10, -10}, {10, 10}}, rotation = 270)));
+      Modelica.Electrical.Polyphase.Basic.Star star annotation (Placement(
+            visible=true, transformation(
+            origin={-88,8},
+            extent={{-10,-10},{10,10}},
+            rotation=270)));
       EHPTlib.SupportModels.Miscellaneous.AronSensor pUp annotation (
         Placement(visible = true, transformation(extent = {{-38, 14}, {-20, 32}}, rotation = 0)));
-      Modelica.Electrical.MultiPhase.Sources.SignalVoltage signalV annotation (
-        Placement(visible = true, transformation(origin = {-58, 23}, extent = {{-10, -9}, {10, 9}}, rotation = 180)));
+      Modelica.Electrical.Polyphase.Sources.SignalVoltage signalV annotation (
+          Placement(visible=true, transformation(
+            origin={-58,23},
+            extent={{-10,-9},{10,9}},
+            rotation=180)));
       Modelica.Mechanics.Rotational.Sensors.SpeedSensor speedSensor annotation (
         Placement(visible = true, transformation(origin = {75, -27}, extent = {{-7, -7}, {7, 7}}, rotation = 270)));
-      Modelica.Electrical.MultiPhase.Sensors.CurrentSensor iUp annotation (
-        Placement(visible = true, transformation(origin = {-6, 40}, extent = {{-8, -8}, {8, 8}}, rotation = 0)));
+      Modelica.Electrical.Polyphase.Sensors.CurrentSensor iUp annotation (
+          Placement(visible=true, transformation(
+            origin={-6,40},
+            extent={{-8,-8},{8,8}},
+            rotation=0)));
       Modelica.Mechanics.Rotational.Components.Inertia inertia(J = 0.5) annotation (
         Placement(visible = true, transformation(extent = {{34, -16}, {54, 4}}, rotation = 0)));
       EHPTlib.ElectricDrives.ASMArelated.ControlLogic logic(Rr = aimc.Rr, Rs = aimc.Rs,  wmMax = 314.16 / 2, uBase = 100 * sqrt(3), Lstray = aimc.Lssigma + aimc.Lrsigma, pp = aimc.p) annotation (
@@ -274,9 +295,8 @@
         Line(points = {{-84, 20}, {-97, 20}}, color = {0, 0, 127}));
       annotation (
         experimentSetupOutput(derivatives = false),
-        Documentation(info = "<html>
-<p>Very basic introductory EV model</p>
-</html>"),
+        Documentation(info = "<html><head></head><body><p>Very basic introductory EV model, but with use of \"data\" record for car's parameters.</p>
+</body></html>"),
         Commands,
         Diagram(coordinateSystem(extent = {{-120, -40}, {100, 60}}, preserveAspectRatio = false), graphics = {Rectangle(origin = {-6, 0}, lineColor = {28, 108, 200}, pattern = LinePattern.Dash, extent = {{-84, 36}, {-24, 4}}), Text(origin = {-6, 0}, lineColor = {28, 108, 200}, pattern = LinePattern.Dash, extent = {{-82, 2}, {-26, -4}}, textString = "electric drive")}),
         Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = false, initialScale = 0.1, grid = {2, 2})),
@@ -344,7 +364,11 @@
     model MBEVdata "Simulates a very basic Electric Vehicle"
       import Modelica;
       extends Modelica.Icons.Example;
-      Modelica.SIunits.Energy enBatDel, enDTdel, enP1del, enBattLoss, enBraking;
+      Modelica.Units.SI.Energy enBatDel;
+      Modelica.Units.SI.Energy enDTdel;
+      Modelica.Units.SI.Energy enP1del;
+      Modelica.Units.SI.Energy enBattLoss;
+      Modelica.Units.SI.Energy enBraking;
       Modelica.Mechanics.Rotational.Components.IdealGear gear(ratio = data.ratio) annotation (
         Placement(visible = true, transformation(origin = {-20, 14}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
       EHPTlib.SupportModels.Miscellaneous.PropDriver driver(CycleFileName = "NEDC.txt", extrapolation = Modelica.Blocks.Types.Extrapolation.Periodic, k = data.kContr, yMax = 100000.0) annotation (
@@ -375,8 +399,11 @@
         Placement(transformation(extent = {{-42, -26}, {-30, -14}})));
       Modelica.Blocks.Math.Gain tqToForce(k = gear.ratio * wheel.radius) annotation (
         Placement(visible = true, transformation(extent = {{0, -26}, {12, -14}}, rotation = 0)));
-      Modelica.Blocks.Nonlinear.Limiter cutNeg(limitsAtInit = true, uMax = 0, uMin = -Modelica.Constants.inf) annotation (
-        Placement(visible = true, transformation(origin = {-14, -20}, extent = {{-6, -6}, {6, 6}}, rotation = 0)));
+      Modelica.Blocks.Nonlinear.Limiter cutNeg(uMax=0, uMin=-Modelica.Constants.inf)
+        annotation (Placement(visible=true, transformation(
+            origin={-14,-20},
+            extent={{-6,-6},{6,6}},
+            rotation=0)));
       VehicleData.Car data annotation (
         Placement(visible = true, transformation(origin = {70, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
     equation
@@ -452,7 +479,7 @@
         Placement(visible = true, transformation(extent = {{4, 10}, {24, 30}}, rotation = 0)));
       Modelica.Mechanics.Rotational.Components.Inertia inertia(J = 5) annotation (
         Placement(visible = true, transformation(extent = {{-54, 10}, {-34, 30}}, rotation = 0)));
-      EHPTlib.SupportModels.Miscellaneous.DragForceAngle dragF1(Cx = 0.65, S = 6.0, fc = 0.013, m = mass.m, rho = 1.226, DataFileName = "Angle1.txt") annotation (
+      EHPTlib.SupportModels.Miscellaneous.DragForceAngle dragF(Cx = 0.65, S = 6.0, fc = 0.013, m = mass.m, rho = 1.226, DataFileName = "Angle1.txt") annotation (
         Placement(visible = true, transformation(origin = {82, -24}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
     equation
       connect(velSens.flange, mass.flange_b) annotation (
@@ -469,13 +496,12 @@
         Line(points = {{-4, 20}, {-4, 20}, {4, 20}}));
       connect(torque.tau, driver.tauRef) annotation (
         Line(points = {{-84, 20}, {-97, 20}}, color = {0, 0, 127}));
-      connect(dragF1.flange, mass.flange_b) annotation (
+      connect(dragF.flange, mass.flange_b) annotation (
         Line(points = {{82, -14}, {82, 20}, {54, 20}}, color = {0, 127, 0}));
       annotation (
         experimentSetupOutput(derivatives = false),
-        Documentation(info = "<html>
-<p>Very basic introductory EV model</p>
-</html>"),
+        Documentation(info = "<html><head></head><body><p>Basic EV model with resistance to movement which includes slope.</p><p>Note that the model is only partially working since it is not able to stop the vehicle with negative angles when zero speed is needed.&nbsp;</p><p>Check the variable dragF.locked when the driver cycle is Sort1.txt: for t=80-100s the requested speed is zero, but the variable dragF.locked remains false.</p><p>Fixing this requires implementing a totally different driver's model, since the driver in these cases must explicitly push on the brake pedal, often requesting a strong negative torque. This enhanced driver model is out of the scope of the EHPTlib library.</p>
+</body></html>"),
         Commands,
         Diagram(coordinateSystem(extent = {{-120, -40}, {100, 40}}, preserveAspectRatio = false), graphics = {Rectangle(origin = {-6, 0}, lineColor = {28, 108, 200}, pattern = LinePattern.Dash, extent = {{-84, 36}, {-24, 4}}), Text(origin = {-6, 0}, lineColor = {28, 108, 200}, pattern = LinePattern.Dash, extent = {{-82, 2}, {-26, -4}}, textString = "electric drive")}),
         Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = false, initialScale = 0.1, grid = {2, 2})),
@@ -487,7 +513,11 @@
     model MBEV "Simulates a very basic Electric Vehicle"
       import Modelica;
       extends Modelica.Icons.Example;
-      Modelica.SIunits.Energy enBatDel, enDTdel, enP1del, enBattLoss, enBraking;
+      Modelica.Units.SI.Energy enBatDel;
+      Modelica.Units.SI.Energy enDTdel;
+      Modelica.Units.SI.Energy enP1del;
+      Modelica.Units.SI.Energy enBattLoss;
+      Modelica.Units.SI.Energy enBraking;
       Modelica.Mechanics.Rotational.Components.IdealGear gear(ratio = 6) annotation (
         Placement(visible = true, transformation(origin = {-20, 14}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
       EHPTlib.SupportModels.Miscellaneous.PropDriver driver(CycleFileName = "NEDC.txt", extrapolation = Modelica.Blocks.Types.Extrapolation.Periodic, yMax = 100000.0, k = 100) annotation (
@@ -518,8 +548,11 @@
         Placement(transformation(extent = {{-42, -26}, {-30, -14}})));
       Modelica.Blocks.Math.Gain tqToForce(k = gear.ratio * wheel.radius) annotation (
         Placement(visible = true, transformation(extent = {{0, -26}, {12, -14}}, rotation = 0)));
-      Modelica.Blocks.Nonlinear.Limiter cutNeg(limitsAtInit = true, uMax = 0, uMin = -Modelica.Constants.inf) annotation (
-        Placement(visible = true, transformation(origin = {-14, -20}, extent = {{-6, -6}, {6, 6}}, rotation = 0)));
+      Modelica.Blocks.Nonlinear.Limiter cutNeg(uMax=0, uMin=-Modelica.Constants.inf)
+        annotation (Placement(visible=true, transformation(
+            origin={-14,-20},
+            extent={{-6,-6},{6,6}},
+            rotation=0)));
     equation
       connect(batt1.n, eleDrive.pin_n) annotation (
         Line(points = {{-91.9, 38}, {-80, 38}, {-80, 10}, {-74, 10}}, color = {0, 0, 255}));
@@ -579,8 +612,7 @@
 
   package sHEV
     model SHEVpowerFilt "Ice, Generator, DriveTrain, all map-based"
-      //€
-      extends Modelica.Icons.Example;
+     extends Modelica.Icons.Example;
       Modelica.Electrical.Analog.Basic.Ground ground1 annotation (
         Placement(transformation(extent = {{-8, -8}, {8, 8}}, rotation = 0, origin = {-42, -2})));
       Modelica.Mechanics.Rotational.Components.IdealRollingWheel wheel(radius = 0.473) annotation (
@@ -980,396 +1012,6 @@
   end sHEV;
 
   package PSD
-    model PSecu1 "Full Power Split Device power train using Map-Based components"
-      import Modelica.Constants.*;
-      extends Modelica.Icons.Example;
-      parameter Modelica.SIunits.AngularVelocity wIceStart = 50;
-      Modelica.SIunits.Energy EbatDel "energy delivered by the battery";
-      Modelica.SIunits.Energy EgenDelM "energy delivered by gen trough mechanical flange";
-      Modelica.SIunits.Energy Eroad "mechanical energy absorbed by roas (friction & air)";
-      Modelica.SIunits.Energy EiceDel "mechanical energy delivered by ice";
-      Modelica.SIunits.Energy Emot, Emass;
-      Modelica.Mechanics.Rotational.Components.IdealPlanetary PSD(ratio = 78 / 30) annotation (
-        Placement(transformation(extent = {{-10, -10}, {10, 10}}, rotation = 0, origin = {-50, 52})));
-      Modelica.Mechanics.Rotational.Components.IdealGear idealGear(ratio = 3.905) annotation (
-        Placement(transformation(extent = {{2, 42}, {22, 62}})));
-      Modelica.Mechanics.Translational.Sensors.SpeedSensor carVel annotation (
-        Placement(transformation(extent = {{-10, -10}, {10, 10}}, rotation = 270, origin = {78, -12})));
-      Modelica.Mechanics.Translational.Components.Mass mass(v(fixed = true, start = 0), m = 1300) annotation (
-        Placement(transformation(extent = {{54, 42}, {74, 62}})));
-      EHPTlib.SupportModels.Miscellaneous.DragForce dragForce(fc = 0.014, rho = 1.226, S = 2.2, Cx = 0.26, m = mass.m) annotation (
-        Placement(transformation(extent = {{-9, -9}, {9, 9}}, rotation = 90, origin = {89, 29})));
-      EHPTlib.MapBased.IceConnP ice annotation (
-        Placement(transformation(extent = {{-98, 46}, {-78, 66}})));
-      EHPTlib.SupportModels.Miscellaneous.Batt1Conn bat(ECellMin = 0.9, ECellMax = 1.45, R0Cell = 0.0003, ns = 168, QCellNom = 2 * 6.5 * 3600.0, SOCInit = 0.6, ICellMax = 1e5, iCellEfficiency = 15 * 6.5) annotation (
-        Placement(transformation(extent = {{-10, -10}, {10, 10}}, rotation = 90, origin = {-16, 0})));
-      EHPTlib.SupportModels.ConnectorRelated.Conn d annotation (
-        Placement(visible = true, transformation(extent = {{2, -40}, {28, -16}}, rotation = 0), iconTransformation(extent = {{4, -52}, {30, -28}}, rotation = 0)));
-      EHPTlib.MapBased.ECUs.Ecu1 ECU(genLoopGain = 1.0) annotation (
-        Placement(visible = true, transformation(origin = {-10, -41}, extent = {{-10, -9}, {10, 9}}, rotation = 0)));
-      EHPTlib.MapBased.TwoFlangeConn mot(effTableName = "motEffTable", mapsFileName = "PSDmaps.txt", mapsOnFile = true) annotation (
-        Placement(visible = true, transformation(extent = {{-28, 62}, {-8, 42}}, rotation = 0)));
-      Modelica.Mechanics.Rotational.Components.IdealRollingWheel wheel(radius = 0.31) annotation (
-        Placement(visible = true, transformation(origin = {38, 52}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-      Modelica.Electrical.Analog.Basic.Ground ground annotation (
-        Placement(visible = true, transformation(origin = {10, 26}, extent = {{10, 10}, {-10, -10}}, rotation = 270)));
-      EHPTlib.MapBased.OneFlangeConn gen annotation (
-        Placement(visible = true, transformation(extent = {{-38, 10}, {-58, 30}}, rotation = 0)));
-      EHPTlib.SupportModels.Miscellaneous.PropDriver driver(CycleFileName = "NEDC.txt", k = 1, yMax = 1.8) annotation (
-        Placement(visible = true, transformation(extent = {{-60, -50}, {-40, -30}}, rotation = 0)));
-    equation
-      connect(ECU.tauRef, driver.tauRef) annotation (
-        Line(points = {{-22, -41}, {-29, -41}, {-29, -40}, {-39, -40}}, color = {0, 0, 127}));
-      connect(carVel.v, driver.V) annotation (
-        Line(points = {{78, -23}, {78, -58}, {-50, -58}, {-50, -51.2}}, color = {0, 0, 127}));
-      connect(mot.conn1, ECU.conn1) annotation (
-        Line(points = {{-27.2, 59.8}, {-27.2, 72}, {50, 72}, {50, -20}, {-10, -20}, {-10, -32.18}}, color = {255, 204, 51}, thickness = 0.5));
-      connect(gen.pin_p, bat.p) annotation (
-        Line(points = {{-38, 24}, {-24, 24}, {-24, 10}, {-23.75, 10}}, color = {0, 0, 255}));
-      connect(gen.pin_n, bat.n) annotation (
-        Line(points = {{-38, 16}, {-8.5, 16}, {-8.5, 10.1}}, color = {0, 0, 255}));
-      connect(gen.flange_a, PSD.sun) annotation (
-        Line(points = {{-58, 20}, {-70, 20}, {-70, 52}, {-60, 52}}));
-      connect(gen.conn, ECU.conn1) annotation (
-        Line(points = {{-58, 12.2}, {-58, -20}, {-10, -20}, {-10, -32.18}}, color = {255, 204, 51}, thickness = 0.5));
-      connect(ground.p, bat.n) annotation (
-        Line(points = {{0, 26}, {-8.5, 26}, {-8.5, 10.1}}, color = {0, 0, 255}));
-      connect(wheel.flangeT, mass.flange_a) annotation (
-        Line(points = {{48, 52}, {54, 52}}, color = {0, 127, 0}));
-      connect(wheel.flangeR, idealGear.flange_b) annotation (
-        Line(points = {{28, 52}, {22, 52}}));
-      connect(PSD.ring, mot.flange_a) annotation (
-        Line(points = {{-40, 52}, {-34, 52}, {-28, 52}}));
-      connect(idealGear.flange_a, mot.flange_b) annotation (
-        Line(points = {{2, 52}, {-4, 52}, {-4, 52.2}, {-8, 52.2}}));
-      connect(mot.pin_p, bat.p) annotation (
-        Line(points = {{-22, 42.2}, {-22, 10}, {-23.75, 10}}, color = {0, 0, 255}));
-      connect(mot.pin_n, bat.n) annotation (
-        Line(points = {{-14, 42}, {-14, 10.1}, {-8.5, 10.1}}, color = {0, 0, 255}));
-      connect(bat.conn, ECU.conn1) annotation (
-        Line(points = {{-15.75, -10}, {-16, -10}, {-16, -20}, {-10, -20}, {-10, -32.18}}, color = {255, 204, 51}, thickness = 0.5));
-      connect(ice.conn, ECU.conn1) annotation (
-        Line(points = {{-88, 45.8}, {-88, 45.8}, {-88, -20}, {-10, -20}, {-10, -32.18}}, color = {255, 204, 51}, thickness = 0.5));
-      connect(ECU.conn1, d) annotation (
-        Line(points = {{-10, -32.18}, {-10, -28}, {15, -28}}, color = {255, 204, 51}, thickness = 0.5));
-      der(EbatDel) = (bat.p.v - bat.n.v) * bat.n.i;
-      der(EgenDelM) = gen.pin_p.i * (gen.pin_p.v - gen.pin_n.v) + gen.flange_a.tau * der(gen.flange_a.phi);
-      der(Eroad) = dragForce.flange.f * der(dragForce.flange.s);
-      der(EiceDel) = -ice.flange_a.tau * der(ice.flange_a.phi);
-      der(Emot) = mot.flange_a.tau * der(mot.flange_a.phi) + mot.flange_b.tau * der(mot.flange_b.phi);
-      Emass = 0.5 * mass.m * der(mass.flange_a.s) ^ 2;
-      connect(PSD.carrier, ice.flange_a) annotation (
-        Line(points = {{-60, 56}, {-70, 56}, {-70, 56}, {-78, 56}}, color = {0, 0, 0}, smooth = Smooth.None));
-      connect(dragForce.flange, mass.flange_b) annotation (
-        Line(points = {{89, 38}, {90, 38}, {90, 52}, {74, 52}}, color = {0, 127, 0}, smooth = Smooth.None));
-      connect(carVel.flange, mass.flange_b) annotation (
-        Line(points = {{78, -2}, {78, 52}, {74, 52}}, color = {0, 127, 0}, smooth = Smooth.None));
-      annotation (
-        __Dymola_experimentSetupOutput,
-        Documentation(info = "<html>
-<p>This model simulates a PSD based power train with a simple control logic, in its ECU:</p>
-<p>It tries to make the ICE deliver the average load power, at its optimal speed.</p>
-<p>This has two main inconveniences:</p>
-<ul>
-<li>the battery SOC is not controlled and tends to drift</li>
-<li>in urban environments the power is too low to allow efficient drive without shutting off the engine.</li>
-</ul>
-<p>These inconveniences are addressed in subsequent models PSEcu2 and PSecu3 (see their infos).</p>
-</html>"),
-        Diagram(coordinateSystem(extent = {{-100, -60}, {100, 80}}, preserveAspectRatio = false, initialScale = 0.1, grid = {2, 2})),
-        Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = false, initialScale = 0.1, grid = {2, 2})),
-        experiment(StartTime = 0, StopTime = 1400, Tolerance = 0.0001, Interval = 2.8));
-    end PSecu1;
-
-    model PSecu2 "Full Power Split Device power train using Map-Based components"
-      import Modelica.Constants.*;
-      extends Modelica.Icons.Example;
-      parameter Modelica.SIunits.AngularVelocity wIceStart = 50;
-      Modelica.SIunits.Energy EbatDel "energy delivered by the battery";
-      Modelica.SIunits.Energy EgenDelM "energy delivered by gen trough mechanical flange";
-      Modelica.SIunits.Energy Eroad "mechanical energy absorbed by roas (friction & air)";
-      Modelica.SIunits.Energy EiceDel "mechanical energy delivered by ice";
-      Modelica.SIunits.Energy Emot, Emass;
-      Modelica.Mechanics.Rotational.Components.IdealPlanetary PSD(ratio = 78 / 30) annotation (
-        Placement(transformation(extent = {{-10, -10}, {10, 10}}, rotation = 0, origin = {-50, 52})));
-      Modelica.Mechanics.Rotational.Components.IdealGear idealGear(ratio = 3.905) annotation (
-        Placement(transformation(extent = {{2, 42}, {22, 62}})));
-      Modelica.Mechanics.Translational.Sensors.SpeedSensor carVel annotation (
-        Placement(transformation(extent = {{-10, -10}, {10, 10}}, rotation = 270, origin = {78, -12})));
-      Modelica.Mechanics.Translational.Components.Mass mass(v(fixed = true, start = 0), m = 1300) annotation (
-        Placement(visible = true, transformation(extent = {{54, 42}, {74, 62}}, rotation = 0)));
-      EHPTlib.SupportModels.Miscellaneous.DragForce dragForce(fc = 0.014, rho = 1.226, S = 2.2, Cx = 0.26, m = mass.m) annotation (
-        Placement(transformation(extent = {{-9, -9}, {9, 9}}, rotation = 90, origin = {89, 29})));
-      EHPTlib.MapBased.IceConnP ice(wIceStart = wIceStart, mapsFileName = "PSDmaps.txt") annotation (
-        Placement(transformation(extent = {{-98, 46}, {-78, 66}})));
-      EHPTlib.SupportModels.Miscellaneous.Batt1Conn bat(ECellMin = 0.9, ECellMax = 1.45, R0Cell = 0.0003, ns = 168, QCellNom = 2 * 6.5 * 3600.0, SOCInit = 0.6, ICellMax = 1e5, iCellEfficiency = 15 * 6.5) annotation (
-        Placement(transformation(extent = {{-10, -10}, {10, 10}}, rotation = 90, origin = {-16, 0})));
-      EHPTlib.SupportModels.ConnectorRelated.Conn d annotation (
-        Placement(visible = true, transformation(extent = {{2, -40}, {28, -16}}, rotation = 0), iconTransformation(extent = {{4, -52}, {30, -28}}, rotation = 0)));
-      EHPTlib.MapBased.ECUs.Ecu2 ECU(socLoopGain = 1e5, genLoopGain = 1.0) annotation (
-        Placement(visible = true, transformation(origin = {-10, -41}, extent = {{-10, -9}, {10, 9}}, rotation = 0)));
-      EHPTlib.MapBased.TwoFlangeConn mot annotation (
-        Placement(visible = true, transformation(extent = {{-28, 62}, {-8, 42}}, rotation = 0)));
-      Modelica.Mechanics.Rotational.Components.IdealRollingWheel wheel(radius = 0.31) annotation (
-        Placement(visible = true, transformation(origin = {38, 52}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-      Modelica.Electrical.Analog.Basic.Ground ground annotation (
-        Placement(visible = true, transformation(origin = {10, 26}, extent = {{10, 10}, {-10, -10}}, rotation = 270)));
-      EHPTlib.MapBased.OneFlangeConn gen(mapsOnFile = true, mapsFileName = "PSDmaps.txt", effTableName = "genEffTable") annotation (
-        Placement(visible = true, transformation(extent = {{-38, 10}, {-58, 30}}, rotation = 0)));
-      EHPTlib.SupportModels.Miscellaneous.PropDriver driver(CycleFileName = "NEDC.txt", k = 1, yMax = 1.8) annotation (
-        Placement(visible = true, transformation(extent = {{-60, -50}, {-40, -30}}, rotation = 0)));
-    equation
-      connect(carVel.flange, mass.flange_b) annotation (
-        Line(points = {{78, -2}, {78, 52}, {74, 52}}, color = {0, 127, 0}));
-      connect(dragForce.flange, mass.flange_b) annotation (
-        Line(points = {{89, 38}, {90, 38}, {90, 52}, {74, 52}}, color = {0, 127, 0}));
-      connect(wheel.flangeT, mass.flange_a) annotation (
-        Line(points = {{48, 52}, {54, 52}}, color = {0, 127, 0}));
-      connect(ECU.tauReference, driver.tauRef) annotation (
-        Line(points = {{-22, -41}, {-29, -41}, {-29, -40}, {-39, -40}}, color = {0, 0, 127}));
-      connect(carVel.v, driver.V) annotation (
-        Line(points = {{78, -23}, {78, -58}, {-50, -58}, {-50, -51.2}}, color = {0, 0, 127}));
-      connect(mot.conn1, ECU.conn1) annotation (
-        Line(points = {{-27.2, 59.8}, {-27.2, 72}, {50, 72}, {50, -20}, {-10, -20}, {-10, -32.18}}, color = {255, 204, 51}, thickness = 0.5));
-      connect(gen.pin_n, bat.n) annotation (
-        Line(points = {{-38, 16}, {-8.5, 16}, {-8.5, 10.1}}, color = {0, 0, 255}));
-      connect(gen.flange_a, PSD.sun) annotation (
-        Line(points = {{-58, 20}, {-70, 20}, {-70, 52}, {-60, 52}}));
-      connect(gen.conn, ECU.conn1) annotation (
-        Line(points = {{-58, 12.2}, {-58, -20}, {-10, -20}, {-10, -32.18}}, color = {255, 204, 51}, thickness = 0.5));
-      connect(ground.p, bat.n) annotation (
-        Line(points = {{0, 26}, {-8.5, 26}, {-8.5, 10.1}}, color = {0, 0, 255}));
-      connect(wheel.flangeR, idealGear.flange_b) annotation (
-        Line(points = {{28, 52}, {22, 52}}));
-      connect(PSD.ring, mot.flange_a) annotation (
-        Line(points = {{-40, 52}, {-34, 52}, {-28, 52}}));
-      connect(idealGear.flange_a, mot.flange_b) annotation (
-        Line(points = {{2, 52}, {-4, 52}, {-4, 52.2}, {-8, 52.2}}));
-      connect(mot.pin_p, bat.p) annotation (
-        Line(points = {{-22, 42.2}, {-22, 10}, {-23.75, 10}}, color = {0, 0, 255}));
-      connect(mot.pin_n, bat.n) annotation (
-        Line(points = {{-14, 42}, {-14, 10.1}, {-8.5, 10.1}}, color = {0, 0, 255}));
-      connect(bat.conn, ECU.conn1) annotation (
-        Line(points = {{-15.75, -10}, {-16, -10}, {-16, -20}, {-10, -20}, {-10, -32.18}}, color = {255, 204, 51}, thickness = 0.5));
-      connect(ice.conn, ECU.conn1) annotation (
-        Line(points = {{-88, 45.8}, {-88, 45.8}, {-88, -20}, {-10, -20}, {-10, -32.18}}, color = {255, 204, 51}, thickness = 0.5));
-      connect(ECU.conn1, d) annotation (
-        Line(points = {{-10, -32.18}, {-10, -28}, {15, -28}}, color = {255, 204, 51}, thickness = 0.5));
-      der(EbatDel) = (bat.p.v - bat.n.v) * bat.n.i;
-      der(EgenDelM) = gen.pin_p.i * (gen.pin_p.v - gen.pin_n.v) + gen.flange_a.tau * der(gen.flange_a.phi);
-      der(Eroad) = dragForce.flange.f * der(dragForce.flange.s);
-      der(EiceDel) = -ice.flange_a.tau * der(ice.flange_a.phi);
-      der(Emot) = mot.flange_a.tau * der(mot.flange_a.phi) + mot.flange_b.tau * der(mot.flange_b.phi);
-      Emass = 0.5 * mass.m * der(mass.flange_a.s) ^ 2;
-      connect(PSD.carrier, ice.flange_a) annotation (
-        Line(points = {{-60, 56}, {-78, 56}}, color = {0, 0, 0}, smooth = Smooth.None));
-      connect(gen.pin_p, bat.p) annotation (
-        Line(points = {{-38, 24}, {-38, 34}, {-22, 34}, {-22, 10}, {-23.75, 10}}, color = {0, 0, 255}));
-      annotation (
-        __Dymola_experimentSetupOutput,
-        Documentation(info = "<html>
-<p>This model simulates a PSD based power train with a simple control logic, in its ECU:</p>
-<p>it tries to make the ICE deliver the average load power, at its optimal speed and with a loop in the ECU that compensates SOC drift (improvement of Ecu2 over Ecu1, thus of PSecu2 over PSecu1).</p>
-</html>"),
-        Diagram(coordinateSystem(extent = {{-100, -60}, {100, 80}}, preserveAspectRatio = false, initialScale = 0.1, grid = {2, 2})),
-        Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = false, initialScale = 0.1, grid = {2, 2})),
-        experiment(StartTime = 0, StopTime = 1400, Tolerance = 0.0001, Interval = 2.8));
-    end PSecu2;
-
-    model PSecu3 "Full Power Split Device power train using Map-Based components"
-      import Modelica.Constants.*;
-      extends Modelica.Icons.Example;
-      parameter Modelica.SIunits.AngularVelocity wIceStart = 50;
-      parameter Real factorDebug = 100;
-      // rad/s
-      Modelica.SIunits.Energy EbatDel "energy delivered by the battery";
-      Modelica.SIunits.Energy EgenDelM "energy delivered by gen trough mechanical flange";
-      Modelica.SIunits.Energy Eroad "mechanical energy absorbed by roas (friction & air)";
-      Modelica.SIunits.Energy EiceDel "mechanical energy delivered by ice";
-      Modelica.SIunits.Energy Emot, Emass;
-      Modelica.Mechanics.Rotational.Components.IdealPlanetary PSD(ratio = 78 / 30) annotation (
-        Placement(transformation(extent = {{-10, -10}, {10, 10}}, rotation = 0, origin = {-50, 52})));
-      Modelica.Mechanics.Rotational.Components.IdealGear idealGear(ratio = 3.905) annotation (
-        Placement(transformation(extent = {{2, 42}, {22, 62}})));
-      Modelica.Mechanics.Translational.Sensors.SpeedSensor carVel annotation (
-        Placement(transformation(extent = {{-10, -10}, {10, 10}}, rotation = 270, origin = {78, -12})));
-      Modelica.Mechanics.Translational.Components.Mass mass(m = 1300, v(fixed = true, start = 0)) annotation (
-        Placement(transformation(extent = {{54, 42}, {74, 62}})));
-      EHPTlib.SupportModels.Miscellaneous.DragForce dragForce(Cx = 0.26, S = 2.2, fc = 0.014, m = mass.m, rho = 1.226) annotation (
-        Placement(transformation(extent = {{-9, -9}, {9, 9}}, rotation = 90, origin = {89, 29})));
-      EHPTlib.MapBased.IceConnPOO ice(mapsFileName = "PSDmaps.txt", wIceStart = wIceStart) annotation (
-        Placement(transformation(extent = {{-98, 46}, {-78, 66}})));
-      EHPTlib.SupportModels.Miscellaneous.Batt1Conn bat(ECellMin = 0.9, ECellMax = 1.45, R0Cell = 0.0003, ns = 168, QCellNom = 2 * 6.5 * 3600.0, SOCInit = 0.6, ICellMax = 1e5, iCellEfficiency = 15 * 6.5) annotation (
-        Placement(transformation(extent = {{-10, -10}, {10, 10}}, rotation = 90, origin = {-16, 0})));
-      EHPTlib.SupportModels.ConnectorRelated.Conn d annotation (
-        Placement(visible = true, transformation(extent = {{2, -40}, {28, -16}}, rotation = 0), iconTransformation(extent = {{4, -52}, {30, -28}}, rotation = 0)));
-      EHPTlib.MapBased.ECUs.Ecu3 ECU(genLoopGain = 1.0, socRef = 0.65) annotation (
-        Placement(visible = true, transformation(origin = {-10, -41}, extent = {{-10, -9}, {10, 9}}, rotation = 0)));
-      EHPTlib.MapBased.TwoFlangeConn mot annotation (
-        Placement(visible = true, transformation(extent = {{-28, 62}, {-8, 42}}, rotation = 0)));
-      Modelica.Mechanics.Rotational.Components.IdealRollingWheel wheel(radius = 0.31) annotation (
-        Placement(visible = true, transformation(origin = {38, 52}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-      EHPTlib.MapBased.OneFlangeConn gen annotation (
-        Placement(visible = true, transformation(extent = {{-38, 10}, {-58, 30}}, rotation = 0)));
-      EHPTlib.SupportModels.Miscellaneous.PropDriver driver(CycleFileName = "NEDC.txt", k = 1, yMax = 1.8) annotation (
-        Placement(visible = true, transformation(extent = {{-60, -50}, {-40, -30}}, rotation = 0)));
-      Modelica.Electrical.Analog.Basic.Ground ground annotation (
-        Placement(visible = true, transformation(origin = {12, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-    equation
-      connect(ground.p, bat.n) annotation (
-        Line(points = {{12, 20}, {-8, 20}, {-8, 10}, {-8, 10.1}, {-8.5, 10.1}}, color = {0, 0, 255}));
-      connect(ECU.tauReference, driver.tauRef) annotation (
-        Line(points = {{-22, -41}, {-29, -41}, {-29, -40}, {-39, -40}}, color = {0, 0, 127}));
-      connect(carVel.v, driver.V) annotation (
-        Line(points = {{78, -23}, {78, -58}, {-50, -58}, {-50, -51.2}}, color = {0, 0, 127}));
-      connect(mot.conn1, ECU.conn) annotation (
-        Line(points = {{-27.2, 59.8}, {-27.2, 72}, {50, 72}, {50, -20}, {-10, -20}, {-10, -32.18}}, color = {255, 204, 51}, thickness = 0.5));
-      connect(gen.pin_p, bat.p) annotation (
-        Line(points = {{-38, 24}, {-22, 24}, {-22, 10}, {-23.75, 10}}, color = {0, 0, 255}));
-      connect(gen.pin_n, bat.n) annotation (
-        Line(points = {{-38, 16}, {-8.5, 16}, {-8.5, 10.1}}, color = {0, 0, 255}));
-      connect(gen.flange_a, PSD.sun) annotation (
-        Line(points = {{-58, 20}, {-70, 20}, {-70, 52}, {-60, 52}}));
-      connect(gen.conn, ECU.conn) annotation (
-        Line(points = {{-58, 12.2}, {-58, -20}, {-10, -20}, {-10, -32.18}}, color = {255, 204, 51}, thickness = 0.5));
-      connect(wheel.flangeT, mass.flange_a) annotation (
-        Line(points = {{48, 52}, {54, 52}}, color = {0, 127, 0}));
-      connect(wheel.flangeR, idealGear.flange_b) annotation (
-        Line(points = {{28, 52}, {22, 52}}));
-      connect(PSD.ring, mot.flange_a) annotation (
-        Line(points = {{-40, 52}, {-34, 52}, {-28, 52}}));
-      connect(idealGear.flange_a, mot.flange_b) annotation (
-        Line(points = {{2, 52}, {-4, 52}, {-4, 52.2}, {-8, 52.2}}));
-      connect(mot.pin_p, bat.p) annotation (
-        Line(points = {{-22, 42.2}, {-22, 10}, {-23.75, 10}}, color = {0, 0, 255}));
-      connect(mot.pin_n, bat.n) annotation (
-        Line(points = {{-14, 42}, {-14, 10.1}, {-8.5, 10.1}}, color = {0, 0, 255}));
-      connect(bat.conn, ECU.conn) annotation (
-        Line(points = {{-15.75, -10}, {-16, -10}, {-16, -20}, {-10, -20}, {-10, -32.18}}, color = {255, 204, 51}, thickness = 0.5));
-      connect(ice.conn, ECU.conn) annotation (
-        Line(points = {{-88, 46.2}, {-88, 46.2}, {-88, -20}, {-10, -20}, {-10, -32.18}}, color = {255, 204, 51}, thickness = 0.5));
-      connect(ECU.conn, d) annotation (
-        Line(points = {{-10, -32.18}, {-10, -28}, {15, -28}}, color = {255, 204, 51}, thickness = 0.5));
-      der(EbatDel) = (bat.p.v - bat.n.v) * bat.n.i;
-      der(EgenDelM) = gen.pin_p.i * (gen.pin_p.v - gen.pin_n.v) + gen.flange_a.tau * der(gen.flange_a.phi);
-      der(Eroad) = dragForce.flange.f * der(dragForce.flange.s);
-      der(EiceDel) = -ice.flange_a.tau * der(ice.flange_a.phi);
-      der(Emot) = mot.flange_a.tau * der(mot.flange_a.phi) + mot.flange_b.tau * der(mot.flange_b.phi);
-      Emass = 0.5 * mass.m * der(mass.flange_a.s) ^ 2;
-      connect(PSD.carrier, ice.flange_a) annotation (
-        Line(points = {{-60, 56}, {-78, 56}}, color = {0, 0, 0}, smooth = Smooth.None));
-      connect(dragForce.flange, mass.flange_b) annotation (
-        Line(points = {{89, 38}, {90, 38}, {90, 52}, {74, 52}}, color = {0, 127, 0}, smooth = Smooth.None));
-      connect(carVel.flange, mass.flange_b) annotation (
-        Line(points = {{78, -2}, {78, 52}, {74, 52}}, color = {0, 127, 0}, smooth = Smooth.None));
-      annotation (
-        __Dymola_experimentSetupOutput,
-        Documentation(info = "<html>
-<p>This model simulates a PSD based power train with a simple control logic, in its ECU:</p>
-<p>it tries to make the ICE deliver the average load power, at its optimal speed and:</p>
-<ol>
-<li>has a loop in the ECU that compensates SOC drift (improvement Ecu1, thus over PSecu1)</li>
-<li>has an hysteresis control in the ECU that implements ON/OFF strategy to avoid too low powers (and correspondingly high consumption) in urban environments (improvement of Ecu3 over Ecu1 and Ecu2, thus of PSecu3 over PSecu1 and PSecu2)</li>
-</ol>
-</html>"),
-        Diagram(coordinateSystem(extent = {{-100, -60}, {100, 80}}, preserveAspectRatio = false, initialScale = 0.1, grid = {2, 2})),
-        Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = false, initialScale = 0.1, grid = {2, 2})),
-        experiment(StartTime = 0, StopTime = 1400, Tolerance = 0.0001, Interval = 2.8));
-    end PSecu3;
-
-    model PSecu2PA "Full Power Split Device power train using Map-Based components"
-      import Modelica.Constants.*;
-      extends Modelica.Icons.Example;
-      parameter Modelica.SIunits.AngularVelocity wIceStart = 50;
-      Modelica.SIunits.Energy EbatDel "energy delivered by the battery";
-      Modelica.SIunits.Energy EgenDelM "energy delivered by gen trough mechanical flange";
-      Modelica.SIunits.Energy Eroad "mechanical energy absorbed by roas (friction & air)";
-      Modelica.SIunits.Energy EiceDel "mechanical energy delivered by ice";
-      Modelica.SIunits.Energy Emot, Emass;
-      Modelica.Mechanics.Rotational.Components.IdealPlanetary PSD(ratio = 78 / 30) annotation (
-        Placement(transformation(extent = {{-10, -10}, {10, 10}}, rotation = 0, origin = {-50, 52})));
-      Modelica.Mechanics.Rotational.Components.IdealGear idealGear(ratio = 3.905) annotation (
-        Placement(transformation(extent = {{2, 42}, {22, 62}})));
-      Modelica.Mechanics.Translational.Sensors.SpeedSensor carVel annotation (
-        Placement(transformation(extent = {{-10, -10}, {10, 10}}, rotation = 270, origin = {78, -12})));
-      Modelica.Mechanics.Translational.Components.Mass mass(v(fixed = true, start = 0), m = 1300) annotation (
-        Placement(visible = true, transformation(extent = {{54, 42}, {74, 62}}, rotation = 0)));
-      EHPTlib.SupportModels.Miscellaneous.DragForce dragForce(fc = 0.014, rho = 1.226, S = 2.2, Cx = 0.26, m = mass.m) annotation (
-        Placement(transformation(extent = {{-9, -9}, {9, 9}}, rotation = 90, origin = {89, 29})));
-      EHPTlib.MapBased.IceConnP ice(wIceStart = wIceStart, mapsFileName = "PSDmaps.txt") annotation (
-        Placement(transformation(extent = {{-98, 46}, {-78, 66}})));
-      EHPTlib.SupportModels.Miscellaneous.Batt1Conn bat(ECellMin = 0.9, ECellMax = 1.45, R0Cell = 0.0003, SOCInit = 0.6, ICellMax = 1e5, iCellEfficiency = 15 * 6.5, ns = 100, QCellNom = 2 * 3600.0) annotation (
-        Placement(transformation(extent = {{-10, -10}, {10, 10}}, rotation = 90, origin = {-16, 0})));
-      EHPTlib.SupportModels.ConnectorRelated.Conn d annotation (
-        Placement(visible = true, transformation(extent = {{2, -40}, {28, -16}}, rotation = 0), iconTransformation(extent = {{4, -52}, {30, -28}}, rotation = 0)));
-      EHPTlib.MapBased.ECUs.Ecu2 ECU(genLoopGain = 1.0, socLoopGain = 2e4, powFiltT = 10) annotation (
-        Placement(visible = true, transformation(origin = {-10, -41}, extent = {{-10, -9}, {10, 9}}, rotation = 0)));
-      EHPTlib.MapBased.TwoFlangeConn mot annotation (
-        Placement(visible = true, transformation(extent = {{-28, 62}, {-8, 42}}, rotation = 0)));
-      Modelica.Mechanics.Rotational.Components.IdealRollingWheel wheel(radius = 0.31) annotation (
-        Placement(visible = true, transformation(origin = {38, 52}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-      Modelica.Electrical.Analog.Basic.Ground ground annotation (
-        Placement(visible = true, transformation(origin = {10, 26}, extent = {{10, 10}, {-10, -10}}, rotation = 270)));
-      EHPTlib.MapBased.OneFlangeConn gen annotation (
-        Placement(visible = true, transformation(extent = {{-38, 10}, {-58, 30}}, rotation = 0)));
-      EHPTlib.SupportModels.Miscellaneous.PropDriver driver(yMax = 1.8, CycleFileName = "nedc.txt", k = 1) annotation (
-        Placement(visible = true, transformation(extent = {{-60, -50}, {-40, -30}}, rotation = 0)));
-    equation
-      connect(carVel.flange, mass.flange_b) annotation (
-        Line(points = {{78, -2}, {78, 52}, {74, 52}}, color = {0, 127, 0}));
-      connect(dragForce.flange, mass.flange_b) annotation (
-        Line(points = {{89, 38}, {90, 38}, {90, 52}, {74, 52}}, color = {0, 127, 0}));
-      connect(wheel.flangeT, mass.flange_a) annotation (
-        Line(points = {{48, 52}, {54, 52}}, color = {0, 127, 0}));
-      connect(ECU.tauReference, driver.tauRef) annotation (
-        Line(points = {{-22, -41}, {-29, -41}, {-29, -40}, {-39, -40}}, color = {0, 0, 127}));
-      connect(carVel.v, driver.V) annotation (
-        Line(points = {{78, -23}, {78, -58}, {-50, -58}, {-50, -51.2}}, color = {0, 0, 127}));
-      connect(mot.conn1, ECU.conn1) annotation (
-        Line(points = {{-27.2, 59.8}, {-27.2, 72}, {50, 72}, {50, -20}, {-10, -20}, {-10, -32.18}}, color = {255, 204, 51}, thickness = 0.5));
-      connect(gen.pin_n, bat.n) annotation (
-        Line(points = {{-38, 16}, {-8.5, 16}, {-8.5, 10.1}}, color = {0, 0, 255}));
-      connect(gen.flange_a, PSD.sun) annotation (
-        Line(points = {{-58, 20}, {-58, 20}, {-70, 20}, {-70, 52}, {-60, 52}}));
-      connect(gen.conn, ECU.conn1) annotation (
-        Line(points = {{-58, 12.2}, {-58, -20}, {-10, -20}, {-10, -32.18}}, color = {255, 204, 51}, thickness = 0.5));
-      connect(ground.p, bat.n) annotation (
-        Line(points = {{0, 26}, {-8.5, 26}, {-8.5, 10.1}}, color = {0, 0, 255}));
-      connect(wheel.flangeR, idealGear.flange_b) annotation (
-        Line(points = {{28, 52}, {22, 52}}));
-      connect(PSD.ring, mot.flange_a) annotation (
-        Line(points = {{-40, 52}, {-34, 52}, {-28, 52}}));
-      connect(idealGear.flange_a, mot.flange_b) annotation (
-        Line(points = {{2, 52}, {-4, 52}, {-4, 52.2}, {-8, 52.2}}));
-      connect(mot.pin_p, bat.p) annotation (
-        Line(points = {{-22, 42.2}, {-22, 10}, {-23.75, 10}}, color = {0, 0, 255}));
-      connect(mot.pin_n, bat.n) annotation (
-        Line(points = {{-14, 42}, {-14, 10.1}, {-8.5, 10.1}}, color = {0, 0, 255}));
-      connect(bat.conn, ECU.conn1) annotation (
-        Line(points = {{-15.75, -10}, {-16, -10}, {-16, -20}, {-10, -20}, {-10, -32.18}}, color = {255, 204, 51}, thickness = 0.5));
-      connect(ice.conn, ECU.conn1) annotation (
-        Line(points = {{-88, 45.8}, {-88, 45.8}, {-88, -20}, {-10, -20}, {-10, -32.18}}, color = {255, 204, 51}, thickness = 0.5));
-      connect(ECU.conn1, d) annotation (
-        Line(points = {{-10, -32.18}, {-10, -28}, {15, -28}}, color = {255, 204, 51}, thickness = 0.5));
-      der(EbatDel) = (bat.p.v - bat.n.v) * bat.n.i;
-      der(EgenDelM) = gen.pin_p.i * (gen.pin_p.v - gen.pin_n.v) + gen.flange_a.tau * der(gen.flange_a.phi);
-      der(Eroad) = dragForce.flange.f * der(dragForce.flange.s);
-      der(EiceDel) = -ice.flange_a.tau * der(ice.flange_a.phi);
-      der(Emot) = mot.flange_a.tau * der(mot.flange_a.phi) + mot.flange_b.tau * der(mot.flange_b.phi);
-      Emass = 0.5 * mass.m * der(mass.flange_a.s) ^ 2;
-      connect(PSD.carrier, ice.flange_a) annotation (
-        Line(points = {{-60, 56}, {-78, 56}}, color = {0, 0, 0}, smooth = Smooth.None));
-      connect(gen.pin_p, bat.p) annotation (
-        Line(points = {{-38, 24}, {-38, 34}, {-22, 34}, {-22, 10}, {-23.75, 10}}, color = {0, 0, 255}));
-      annotation (
-        __Dymola_experimentSetupOutput,
-        Documentation(info = "<html>
-<p>Like PSecu2, but solves the Proposed Activity that requires a very small battery and near-CVT (continuosuly-variable Transmission) operation. </p>
-</html>"),
-        Diagram(coordinateSystem(extent = {{-100, -60}, {100, 80}}, preserveAspectRatio = false, initialScale = 0.1, grid = {2, 2})),
-        Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = false, initialScale = 0.1, grid = {2, 2})),
-        experiment(StartTime = 0, StopTime = 1400, Tolerance = 0.0001, Interval = 2.8));
-    end PSecu2PA;
 
     package BasicPT "Basic Power Trains"
       extends Modelica.Icons.ExamplesPackage;
@@ -1402,13 +1044,10 @@
           Line(points = {{16, 36}, {28, 36}}, color = {0, 127, 0}));
         annotation (
           __Dymola_experimentSetupOutput,
-          Documentation(info = "<html>
-<h4>newInst OK</h4>
-<h4>Modello di base per mostrare le prime funzionalit&agrave; di un sistema basato su PSD.</h4>
-<p><br><u>Obiettivo finale</u>: simulazione di principio di Toyota Prius </p>
-<p><u>Obiettivo di questa simulazione</u>: </p>
-<p>Analizzare i punti di lavoro del PSD in un transitorio in cuil il veicolo decelera a seguito solo delle resistenze al moto d 120 km/h a 0; l&apos;ICE &egrave; mantenuto a velocit&agrave; costante da uno specifico controllo in retroazione, l&apos;inerzia di gen &egrave; aumentata di un fattore 20. </p>
-</html>", revisions = "<html><head></head><body>No NewInst</body></html>"),
+          Documentation(info = "<html><head></head><body><h4>newInst OK</h4>
+<h4>Basic model to show some funcionalitiea of a PSD-based power train</h4><p><u>Purpose f this simulation</u>:</p>
+<p>to show the PSD operating points in a transient in which the vehicle decelerates as a consequence of only the resistances to movement (friction, aerodinamic drag) from &nbsp;120 km/h up to 0. The Internal Combustion Engine is kept at constant speed using a specific closed-loop control. The \"gen\" inertia is artificially enlarged, with reference to actual car's by a factor of 20. </p>
+</body></html>", revisions = "<html><head></head><body>No NewInst</body></html>"),
           conversion(noneFromVersion = ""),
           Diagram(coordinateSystem(extent = {{-80, -40}, {60, 60}}, preserveAspectRatio = false, initialScale = 0.1, grid = {2, 2})),
           Icon(coordinateSystem(extent = {{-80, -40}, {60, 60}}, preserveAspectRatio = false, initialScale = 0.1, grid = {2, 2})),
@@ -1510,7 +1149,7 @@
         import Modelica.Constants.*;
         parameter Real vMass = 1300;
         parameter Real wICE = 167 "rad/s";
-        Modelica.SIunits.Power genPow0 = genTau.tau * der(genTau.flange.phi);
+        Modelica.Units.SI.Power genPow0=genTau.tau*der(genTau.flange.phi);
         // rad/s
         Modelica.Blocks.Nonlinear.Limiter limTgen(uMax = 30) annotation (
           Placement(visible = true, transformation(origin = {-86, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 90)));
@@ -1803,6 +1442,407 @@ Poi con velocità max di 120 km/h")}));
           experiment(StartTime = 0, StopTime = 300, Tolerance = 0.0001, Interval = 0.15));
       end FreeBraking;
     end BasicPT;
+    model PSecu1 "Full Power Split Device power train using Map-Based components"
+      import Modelica.Constants.*;
+      extends Modelica.Icons.Example;
+      parameter Modelica.Units.SI.AngularVelocity wIceStart=50;
+      Modelica.Units.SI.Energy EbatDel "energy delivered by the battery";
+      Modelica.Units.SI.Energy EgenDelM
+        "energy delivered by gen trough mechanical flange";
+      Modelica.Units.SI.Energy Eroad
+        "mechanical energy absorbed by roas (friction & air)";
+      Modelica.Units.SI.Energy EiceDel "mechanical energy delivered by ice";
+      Modelica.Units.SI.Energy Emot;
+      Modelica.Units.SI.Energy Emass;
+      Modelica.Mechanics.Rotational.Components.IdealPlanetary PSD(ratio = 78 / 30) annotation (
+        Placement(transformation(extent = {{-10, -10}, {10, 10}}, rotation = 0, origin = {-50, 52})));
+      Modelica.Mechanics.Rotational.Components.IdealGear idealGear(ratio = 3.905) annotation (
+        Placement(transformation(extent = {{2, 42}, {22, 62}})));
+      Modelica.Mechanics.Translational.Sensors.SpeedSensor carVel annotation (
+        Placement(transformation(extent = {{-10, -10}, {10, 10}}, rotation = 270, origin = {78, -12})));
+      Modelica.Mechanics.Translational.Components.Mass mass(v(fixed = true, start = 0), m = 1300) annotation (
+        Placement(transformation(extent = {{54, 42}, {74, 62}})));
+      EHPTlib.SupportModels.Miscellaneous.DragForce dragForce(fc = 0.014, rho = 1.226, S = 2.2, Cx = 0.26, m = mass.m) annotation (
+        Placement(transformation(extent = {{-9, -9}, {9, 9}}, rotation = 90, origin = {89, 29})));
+      EHPTlib.MapBased.IceConnP ice annotation (
+        Placement(transformation(extent = {{-98, 46}, {-78, 66}})));
+      EHPTlib.SupportModels.Miscellaneous.Batt1Conn bat(ECellMin = 0.9, ECellMax = 1.45, R0Cell = 0.0003, ns = 168, QCellNom = 2 * 6.5 * 3600.0, SOCInit = 0.6, ICellMax = 1e5, iCellEfficiency = 15 * 6.5) annotation (
+        Placement(transformation(extent = {{-10, -10}, {10, 10}}, rotation = 90, origin = {-16, 0})));
+      EHPTlib.SupportModels.ConnectorRelated.Conn d annotation (
+        Placement(visible = true, transformation(extent = {{2, -40}, {28, -16}}, rotation = 0), iconTransformation(extent = {{4, -52}, {30, -28}}, rotation = 0)));
+      EHPTlib.MapBased.ECUs.Ecu1 ECU(genLoopGain = 1.0) annotation (
+        Placement(visible = true, transformation(origin = {-10, -41}, extent = {{-10, -9}, {10, 9}}, rotation = 0)));
+      EHPTlib.MapBased.TwoFlangeConn mot(effTableName = "motEffTable", mapsFileName = "PSDmaps.txt", mapsOnFile = true) annotation (
+        Placement(visible = true, transformation(extent = {{-28, 62}, {-8, 42}}, rotation = 0)));
+      Modelica.Mechanics.Rotational.Components.IdealRollingWheel wheel(radius = 0.31) annotation (
+        Placement(visible = true, transformation(origin = {38, 52}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+      Modelica.Electrical.Analog.Basic.Ground ground annotation (
+        Placement(visible = true, transformation(origin = {10, 26}, extent = {{10, 10}, {-10, -10}}, rotation = 270)));
+      EHPTlib.MapBased.OneFlangeConn gen annotation (
+        Placement(visible = true, transformation(extent = {{-38, 10}, {-58, 30}}, rotation = 0)));
+      EHPTlib.SupportModels.Miscellaneous.PropDriver driver(CycleFileName = "NEDC.txt", k = 1, yMax = 1.8) annotation (
+        Placement(visible = true, transformation(extent = {{-60, -50}, {-40, -30}}, rotation = 0)));
+    equation
+      connect(ECU.tauRef, driver.tauRef) annotation (
+        Line(points = {{-22, -41}, {-29, -41}, {-29, -40}, {-39, -40}}, color = {0, 0, 127}));
+      connect(carVel.v, driver.V) annotation (
+        Line(points = {{78, -23}, {78, -58}, {-50, -58}, {-50, -51.2}}, color = {0, 0, 127}));
+      connect(mot.conn1, ECU.conn1) annotation (
+        Line(points = {{-27.2, 59.8}, {-27.2, 72}, {50, 72}, {50, -20}, {-10, -20}, {-10, -32.18}}, color = {255, 204, 51}, thickness = 0.5));
+      connect(gen.pin_p, bat.p) annotation (
+        Line(points = {{-38, 24}, {-24, 24}, {-24, 10}, {-23.75, 10}}, color = {0, 0, 255}));
+      connect(gen.pin_n, bat.n) annotation (
+        Line(points = {{-38, 16}, {-8.5, 16}, {-8.5, 10.1}}, color = {0, 0, 255}));
+      connect(gen.flange_a, PSD.sun) annotation (
+        Line(points = {{-58, 20}, {-70, 20}, {-70, 52}, {-60, 52}}));
+      connect(gen.conn, ECU.conn1) annotation (
+        Line(points = {{-58, 12.2}, {-58, -20}, {-10, -20}, {-10, -32.18}}, color = {255, 204, 51}, thickness = 0.5));
+      connect(ground.p, bat.n) annotation (
+        Line(points = {{0, 26}, {-8.5, 26}, {-8.5, 10.1}}, color = {0, 0, 255}));
+      connect(wheel.flangeT, mass.flange_a) annotation (
+        Line(points = {{48, 52}, {54, 52}}, color = {0, 127, 0}));
+      connect(wheel.flangeR, idealGear.flange_b) annotation (
+        Line(points = {{28, 52}, {22, 52}}));
+      connect(PSD.ring, mot.flange_a) annotation (
+        Line(points = {{-40, 52}, {-34, 52}, {-28, 52}}));
+      connect(idealGear.flange_a, mot.flange_b) annotation (
+        Line(points = {{2, 52}, {-4, 52}, {-4, 52.2}, {-8, 52.2}}));
+      connect(mot.pin_p, bat.p) annotation (
+        Line(points = {{-22, 42.2}, {-22, 10}, {-23.75, 10}}, color = {0, 0, 255}));
+      connect(mot.pin_n, bat.n) annotation (
+        Line(points = {{-14, 42}, {-14, 10.1}, {-8.5, 10.1}}, color = {0, 0, 255}));
+      connect(bat.conn, ECU.conn1) annotation (
+        Line(points = {{-15.75, -10}, {-16, -10}, {-16, -20}, {-10, -20}, {-10, -32.18}}, color = {255, 204, 51}, thickness = 0.5));
+      connect(ice.conn, ECU.conn1) annotation (
+        Line(points = {{-88, 45.8}, {-88, 45.8}, {-88, -20}, {-10, -20}, {-10, -32.18}}, color = {255, 204, 51}, thickness = 0.5));
+      connect(ECU.conn1, d) annotation (
+        Line(points = {{-10, -32.18}, {-10, -28}, {15, -28}}, color = {255, 204, 51}, thickness = 0.5));
+      der(EbatDel) = (bat.p.v - bat.n.v) * bat.n.i;
+      der(EgenDelM) = gen.pin_p.i * (gen.pin_p.v - gen.pin_n.v) + gen.flange_a.tau * der(gen.flange_a.phi);
+      der(Eroad) = dragForce.flange.f * der(dragForce.flange.s);
+      der(EiceDel) = -ice.flange_a.tau * der(ice.flange_a.phi);
+      der(Emot) = mot.flange_a.tau * der(mot.flange_a.phi) + mot.flange_b.tau * der(mot.flange_b.phi);
+      Emass = 0.5 * mass.m * der(mass.flange_a.s) ^ 2;
+      connect(PSD.carrier, ice.flange_a) annotation (
+        Line(points = {{-60, 56}, {-70, 56}, {-70, 56}, {-78, 56}}, color = {0, 0, 0}, smooth = Smooth.None));
+      connect(dragForce.flange, mass.flange_b) annotation (
+        Line(points = {{89, 38}, {90, 38}, {90, 52}, {74, 52}}, color = {0, 127, 0}, smooth = Smooth.None));
+      connect(carVel.flange, mass.flange_b) annotation (
+        Line(points = {{78, -2}, {78, 52}, {74, 52}}, color = {0, 127, 0}, smooth = Smooth.None));
+      annotation (
+        __Dymola_experimentSetupOutput,
+        Documentation(info = "<html>
+<p>This model simulates a PSD based power train with a simple control logic, in its ECU:</p>
+<p>It tries to make the ICE deliver the average load power, at its optimal speed.</p>
+<p>This has two main inconveniences:</p>
+<ul>
+<li>the battery SOC is not controlled and tends to drift</li>
+<li>in urban environments the power is too low to allow efficient drive without shutting off the engine.</li>
+</ul>
+<p>These inconveniences are addressed in subsequent models PSEcu2 and PSecu3 (see their infos).</p>
+</html>"),
+        Diagram(coordinateSystem(extent = {{-100, -60}, {100, 80}}, preserveAspectRatio = false, initialScale = 0.1, grid = {2, 2})),
+        Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = false, initialScale = 0.1, grid = {2, 2})),
+        experiment(StartTime = 0, StopTime = 1400, Tolerance = 0.0001, Interval = 2.8));
+    end PSecu1;
+
+    model PSecu2 "Full Power Split Device power train using Map-Based components"
+      import Modelica.Constants.*;
+      extends Modelica.Icons.Example;
+      parameter Modelica.Units.SI.AngularVelocity wIceStart=50;
+      Modelica.Units.SI.Energy EbatDel "energy delivered by the battery";
+      Modelica.Units.SI.Energy EgenDelM
+        "energy delivered by gen trough mechanical flange";
+      Modelica.Units.SI.Energy Eroad
+        "mechanical energy absorbed by roas (friction & air)";
+      Modelica.Units.SI.Energy EiceDel "mechanical energy delivered by ice";
+      Modelica.Units.SI.Energy Emot;
+      Modelica.Units.SI.Energy Emass;
+      Modelica.Mechanics.Rotational.Components.IdealPlanetary PSD(ratio = 78 / 30) annotation (
+        Placement(transformation(extent = {{-10, -10}, {10, 10}}, rotation = 0, origin = {-50, 52})));
+      Modelica.Mechanics.Rotational.Components.IdealGear idealGear(ratio = 3.905) annotation (
+        Placement(transformation(extent = {{2, 42}, {22, 62}})));
+      Modelica.Mechanics.Translational.Sensors.SpeedSensor carVel annotation (
+        Placement(transformation(extent = {{-10, -10}, {10, 10}}, rotation = 270, origin = {78, -12})));
+      Modelica.Mechanics.Translational.Components.Mass mass(v(fixed = true, start = 0), m = 1300) annotation (
+        Placement(visible = true, transformation(extent = {{54, 42}, {74, 62}}, rotation = 0)));
+      EHPTlib.SupportModels.Miscellaneous.DragForce dragForce(fc = 0.014, rho = 1.226, S = 2.2, Cx = 0.26, m = mass.m) annotation (
+        Placement(transformation(extent = {{-9, -9}, {9, 9}}, rotation = 90, origin = {89, 29})));
+      EHPTlib.MapBased.IceConnP ice(wIceStart = wIceStart, mapsFileName = "PSDmaps.txt") annotation (
+        Placement(transformation(extent = {{-98, 46}, {-78, 66}})));
+      EHPTlib.SupportModels.Miscellaneous.Batt1Conn bat(ECellMin = 0.9, ECellMax = 1.45, R0Cell = 0.0003, ns = 168, QCellNom = 2 * 6.5 * 3600.0, SOCInit = 0.6, ICellMax = 1e5, iCellEfficiency = 15 * 6.5) annotation (
+        Placement(transformation(extent = {{-10, -10}, {10, 10}}, rotation = 90, origin = {-16, 0})));
+      EHPTlib.SupportModels.ConnectorRelated.Conn d annotation (
+        Placement(visible = true, transformation(extent = {{2, -40}, {28, -16}}, rotation = 0), iconTransformation(extent = {{4, -52}, {30, -28}}, rotation = 0)));
+      EHPTlib.MapBased.ECUs.Ecu2 ECU(socLoopGain = 1e5, genLoopGain = 1.0) annotation (
+        Placement(visible = true, transformation(origin = {-10, -41}, extent = {{-10, -9}, {10, 9}}, rotation = 0)));
+      EHPTlib.MapBased.TwoFlangeConn mot annotation (
+        Placement(visible = true, transformation(extent = {{-28, 62}, {-8, 42}}, rotation = 0)));
+      Modelica.Mechanics.Rotational.Components.IdealRollingWheel wheel(radius = 0.31) annotation (
+        Placement(visible = true, transformation(origin = {38, 52}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+      Modelica.Electrical.Analog.Basic.Ground ground annotation (
+        Placement(visible = true, transformation(origin = {10, 26}, extent = {{10, 10}, {-10, -10}}, rotation = 270)));
+      EHPTlib.MapBased.OneFlangeConn gen(mapsOnFile = true, mapsFileName = "PSDmaps.txt", effTableName = "genEffTable") annotation (
+        Placement(visible = true, transformation(extent = {{-38, 10}, {-58, 30}}, rotation = 0)));
+      EHPTlib.SupportModels.Miscellaneous.PropDriver driver(CycleFileName = "NEDC.txt", k = 1, yMax = 1.8) annotation (
+        Placement(visible = true, transformation(extent = {{-60, -50}, {-40, -30}}, rotation = 0)));
+    equation
+      connect(carVel.flange, mass.flange_b) annotation (
+        Line(points = {{78, -2}, {78, 52}, {74, 52}}, color = {0, 127, 0}));
+      connect(dragForce.flange, mass.flange_b) annotation (
+        Line(points = {{89, 38}, {90, 38}, {90, 52}, {74, 52}}, color = {0, 127, 0}));
+      connect(wheel.flangeT, mass.flange_a) annotation (
+        Line(points = {{48, 52}, {54, 52}}, color = {0, 127, 0}));
+      connect(ECU.tauReference, driver.tauRef) annotation (
+        Line(points = {{-22, -41}, {-29, -41}, {-29, -40}, {-39, -40}}, color = {0, 0, 127}));
+      connect(carVel.v, driver.V) annotation (
+        Line(points = {{78, -23}, {78, -58}, {-50, -58}, {-50, -51.2}}, color = {0, 0, 127}));
+      connect(mot.conn1, ECU.conn1) annotation (
+        Line(points = {{-27.2, 59.8}, {-27.2, 72}, {50, 72}, {50, -20}, {-10, -20}, {-10, -32.18}}, color = {255, 204, 51}, thickness = 0.5));
+      connect(gen.pin_n, bat.n) annotation (
+        Line(points = {{-38, 16}, {-8.5, 16}, {-8.5, 10.1}}, color = {0, 0, 255}));
+      connect(gen.flange_a, PSD.sun) annotation (
+        Line(points = {{-58, 20}, {-70, 20}, {-70, 52}, {-60, 52}}));
+      connect(gen.conn, ECU.conn1) annotation (
+        Line(points = {{-58, 12.2}, {-58, -20}, {-10, -20}, {-10, -32.18}}, color = {255, 204, 51}, thickness = 0.5));
+      connect(ground.p, bat.n) annotation (
+        Line(points = {{0, 26}, {-8.5, 26}, {-8.5, 10.1}}, color = {0, 0, 255}));
+      connect(wheel.flangeR, idealGear.flange_b) annotation (
+        Line(points = {{28, 52}, {22, 52}}));
+      connect(PSD.ring, mot.flange_a) annotation (
+        Line(points = {{-40, 52}, {-34, 52}, {-28, 52}}));
+      connect(idealGear.flange_a, mot.flange_b) annotation (
+        Line(points = {{2, 52}, {-4, 52}, {-4, 52.2}, {-8, 52.2}}));
+      connect(mot.pin_p, bat.p) annotation (
+        Line(points = {{-22, 42.2}, {-22, 10}, {-23.75, 10}}, color = {0, 0, 255}));
+      connect(mot.pin_n, bat.n) annotation (
+        Line(points = {{-14, 42}, {-14, 10.1}, {-8.5, 10.1}}, color = {0, 0, 255}));
+      connect(bat.conn, ECU.conn1) annotation (
+        Line(points = {{-15.75, -10}, {-16, -10}, {-16, -20}, {-10, -20}, {-10, -32.18}}, color = {255, 204, 51}, thickness = 0.5));
+      connect(ice.conn, ECU.conn1) annotation (
+        Line(points = {{-88, 45.8}, {-88, 45.8}, {-88, -20}, {-10, -20}, {-10, -32.18}}, color = {255, 204, 51}, thickness = 0.5));
+      connect(ECU.conn1, d) annotation (
+        Line(points = {{-10, -32.18}, {-10, -28}, {15, -28}}, color = {255, 204, 51}, thickness = 0.5));
+      der(EbatDel) = (bat.p.v - bat.n.v) * bat.n.i;
+      der(EgenDelM) = gen.pin_p.i * (gen.pin_p.v - gen.pin_n.v) + gen.flange_a.tau * der(gen.flange_a.phi);
+      der(Eroad) = dragForce.flange.f * der(dragForce.flange.s);
+      der(EiceDel) = -ice.flange_a.tau * der(ice.flange_a.phi);
+      der(Emot) = mot.flange_a.tau * der(mot.flange_a.phi) + mot.flange_b.tau * der(mot.flange_b.phi);
+      Emass = 0.5 * mass.m * der(mass.flange_a.s) ^ 2;
+      connect(PSD.carrier, ice.flange_a) annotation (
+        Line(points = {{-60, 56}, {-78, 56}}, color = {0, 0, 0}, smooth = Smooth.None));
+      connect(gen.pin_p, bat.p) annotation (
+        Line(points = {{-38, 24}, {-38, 34}, {-22, 34}, {-22, 10}, {-23.75, 10}}, color = {0, 0, 255}));
+      annotation (
+        __Dymola_experimentSetupOutput,
+        Documentation(info = "<html>
+<p>This model simulates a PSD based power train with a simple control logic, in its ECU:</p>
+<p>it tries to make the ICE deliver the average load power, at its optimal speed and with a loop in the ECU that compensates SOC drift (improvement of Ecu2 over Ecu1, thus of PSecu2 over PSecu1).</p>
+</html>"),
+        Diagram(coordinateSystem(extent = {{-100, -60}, {100, 80}}, preserveAspectRatio = false, initialScale = 0.1, grid = {2, 2})),
+        Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = false, initialScale = 0.1, grid = {2, 2})),
+        experiment(StartTime = 0, StopTime = 1400, Tolerance = 0.0001, Interval = 2.8));
+    end PSecu2;
+
+    model PSecu3 "Full Power Split Device power train using Map-Based components"
+      import Modelica.Constants.*;
+      extends Modelica.Icons.Example;
+      parameter Modelica.Units.SI.AngularVelocity wIceStart=50;
+      parameter Real factorDebug = 100;
+      // rad/s
+      Modelica.Units.SI.Energy EbatDel "energy delivered by the battery";
+      Modelica.Units.SI.Energy EgenDelM
+        "energy delivered by gen trough mechanical flange";
+      Modelica.Units.SI.Energy Eroad
+        "mechanical energy absorbed by roas (friction & air)";
+      Modelica.Units.SI.Energy EiceDel "mechanical energy delivered by ice";
+      Modelica.Units.SI.Energy Emot;
+      Modelica.Units.SI.Energy Emass;
+      Modelica.Mechanics.Rotational.Components.IdealPlanetary PSD(ratio = 78 / 30) annotation (
+        Placement(transformation(extent = {{-10, -10}, {10, 10}}, rotation = 0, origin = {-50, 52})));
+      Modelica.Mechanics.Rotational.Components.IdealGear idealGear(ratio = 3.905) annotation (
+        Placement(transformation(extent = {{2, 42}, {22, 62}})));
+      Modelica.Mechanics.Translational.Sensors.SpeedSensor carVel annotation (
+        Placement(transformation(extent = {{-10, -10}, {10, 10}}, rotation = 270, origin = {78, -12})));
+      Modelica.Mechanics.Translational.Components.Mass mass(m = 1300, v(fixed = true, start = 0)) annotation (
+        Placement(transformation(extent = {{54, 42}, {74, 62}})));
+      EHPTlib.SupportModels.Miscellaneous.DragForce dragForce(Cx = 0.26, S = 2.2, fc = 0.014, m = mass.m, rho = 1.226) annotation (
+        Placement(transformation(extent = {{-9, -9}, {9, 9}}, rotation = 90, origin = {89, 29})));
+      EHPTlib.MapBased.IceConnPOO ice(mapsFileName = "PSDmaps.txt", wIceStart = wIceStart) annotation (
+        Placement(transformation(extent = {{-98, 46}, {-78, 66}})));
+      EHPTlib.SupportModels.Miscellaneous.Batt1Conn bat(ECellMin = 0.9, ECellMax = 1.45, R0Cell = 0.0003, ns = 168, QCellNom = 2 * 6.5 * 3600.0, SOCInit = 0.6, ICellMax = 1e5, iCellEfficiency = 15 * 6.5) annotation (
+        Placement(transformation(extent = {{-10, -10}, {10, 10}}, rotation = 90, origin = {-16, 0})));
+      EHPTlib.SupportModels.ConnectorRelated.Conn d annotation (
+        Placement(visible = true, transformation(extent = {{2, -40}, {28, -16}}, rotation = 0), iconTransformation(extent = {{4, -52}, {30, -28}}, rotation = 0)));
+      EHPTlib.MapBased.ECUs.Ecu3 ECU(genLoopGain = 1.0, socRef = 0.65) annotation (
+        Placement(visible = true, transformation(origin = {-10, -41}, extent = {{-10, -9}, {10, 9}}, rotation = 0)));
+      EHPTlib.MapBased.TwoFlangeConn mot annotation (
+        Placement(visible = true, transformation(extent = {{-28, 62}, {-8, 42}}, rotation = 0)));
+      Modelica.Mechanics.Rotational.Components.IdealRollingWheel wheel(radius = 0.31) annotation (
+        Placement(visible = true, transformation(origin = {38, 52}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+      EHPTlib.MapBased.OneFlangeConn gen annotation (
+        Placement(visible = true, transformation(extent = {{-38, 10}, {-58, 30}}, rotation = 0)));
+      EHPTlib.SupportModels.Miscellaneous.PropDriver driver(CycleFileName = "NEDC.txt", k = 1, yMax = 1.8) annotation (
+        Placement(visible = true, transformation(extent = {{-60, -50}, {-40, -30}}, rotation = 0)));
+      Modelica.Electrical.Analog.Basic.Ground ground annotation (
+        Placement(visible = true, transformation(origin = {12, 10}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+    equation
+      connect(ground.p, bat.n) annotation (
+        Line(points = {{12, 20}, {-8, 20}, {-8, 10}, {-8, 10.1}, {-8.5, 10.1}}, color = {0, 0, 255}));
+      connect(ECU.tauReference, driver.tauRef) annotation (
+        Line(points = {{-22, -41}, {-29, -41}, {-29, -40}, {-39, -40}}, color = {0, 0, 127}));
+      connect(carVel.v, driver.V) annotation (
+        Line(points = {{78, -23}, {78, -58}, {-50, -58}, {-50, -51.2}}, color = {0, 0, 127}));
+      connect(mot.conn1, ECU.conn) annotation (
+        Line(points = {{-27.2, 59.8}, {-27.2, 72}, {50, 72}, {50, -20}, {-10, -20}, {-10, -32.18}}, color = {255, 204, 51}, thickness = 0.5));
+      connect(gen.pin_p, bat.p) annotation (
+        Line(points = {{-38, 24}, {-22, 24}, {-22, 10}, {-23.75, 10}}, color = {0, 0, 255}));
+      connect(gen.pin_n, bat.n) annotation (
+        Line(points = {{-38, 16}, {-8.5, 16}, {-8.5, 10.1}}, color = {0, 0, 255}));
+      connect(gen.flange_a, PSD.sun) annotation (
+        Line(points = {{-58, 20}, {-70, 20}, {-70, 52}, {-60, 52}}));
+      connect(gen.conn, ECU.conn) annotation (
+        Line(points = {{-58, 12.2}, {-58, -20}, {-10, -20}, {-10, -32.18}}, color = {255, 204, 51}, thickness = 0.5));
+      connect(wheel.flangeT, mass.flange_a) annotation (
+        Line(points = {{48, 52}, {54, 52}}, color = {0, 127, 0}));
+      connect(wheel.flangeR, idealGear.flange_b) annotation (
+        Line(points = {{28, 52}, {22, 52}}));
+      connect(PSD.ring, mot.flange_a) annotation (
+        Line(points = {{-40, 52}, {-34, 52}, {-28, 52}}));
+      connect(idealGear.flange_a, mot.flange_b) annotation (
+        Line(points = {{2, 52}, {-4, 52}, {-4, 52.2}, {-8, 52.2}}));
+      connect(mot.pin_p, bat.p) annotation (
+        Line(points = {{-22, 42.2}, {-22, 10}, {-23.75, 10}}, color = {0, 0, 255}));
+      connect(mot.pin_n, bat.n) annotation (
+        Line(points = {{-14, 42}, {-14, 10.1}, {-8.5, 10.1}}, color = {0, 0, 255}));
+      connect(bat.conn, ECU.conn) annotation (
+        Line(points = {{-15.75, -10}, {-16, -10}, {-16, -20}, {-10, -20}, {-10, -32.18}}, color = {255, 204, 51}, thickness = 0.5));
+      connect(ice.conn, ECU.conn) annotation (
+        Line(points = {{-88, 46.2}, {-88, 46.2}, {-88, -20}, {-10, -20}, {-10, -32.18}}, color = {255, 204, 51}, thickness = 0.5));
+      connect(ECU.conn, d) annotation (
+        Line(points = {{-10, -32.18}, {-10, -28}, {15, -28}}, color = {255, 204, 51}, thickness = 0.5));
+      der(EbatDel) = (bat.p.v - bat.n.v) * bat.n.i;
+      der(EgenDelM) = gen.pin_p.i * (gen.pin_p.v - gen.pin_n.v) + gen.flange_a.tau * der(gen.flange_a.phi);
+      der(Eroad) = dragForce.flange.f * der(dragForce.flange.s);
+      der(EiceDel) = -ice.flange_a.tau * der(ice.flange_a.phi);
+      der(Emot) = mot.flange_a.tau * der(mot.flange_a.phi) + mot.flange_b.tau * der(mot.flange_b.phi);
+      Emass = 0.5 * mass.m * der(mass.flange_a.s) ^ 2;
+      connect(PSD.carrier, ice.flange_a) annotation (
+        Line(points = {{-60, 56}, {-78, 56}}, color = {0, 0, 0}, smooth = Smooth.None));
+      connect(dragForce.flange, mass.flange_b) annotation (
+        Line(points = {{89, 38}, {90, 38}, {90, 52}, {74, 52}}, color = {0, 127, 0}, smooth = Smooth.None));
+      connect(carVel.flange, mass.flange_b) annotation (
+        Line(points = {{78, -2}, {78, 52}, {74, 52}}, color = {0, 127, 0}, smooth = Smooth.None));
+      annotation (
+        __Dymola_experimentSetupOutput,
+        Documentation(info = "<html><head></head><body><p>This model simulates a PSD based power train with a simple control logic, in its ECU:</p>
+<p>it tries to make the ICE deliver the average load power, at its optimal speed and:</p>
+<ol>
+<li>has a loop in the ECU that compensates SOC drift (improvement Ecu1, thus over PSecu1)</li>
+<li>has an ysteresis control in the ECU that implements ON/OFF strategy to avoid too low powers (and correspondingly high consumption) in urban environments (improvement of Ecu3 over Ecu1 and Ecu2, thus of PSecu3 over PSecu1 and PSecu2)</li>
+</ol>
+</body></html>"),
+        Diagram(coordinateSystem(extent = {{-100, -60}, {100, 80}}, preserveAspectRatio = false, initialScale = 0.1, grid = {2, 2})),
+        Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = false, initialScale = 0.1, grid = {2, 2})),
+        experiment(StartTime = 0, StopTime = 1400, Tolerance = 0.0001, Interval = 2.8));
+    end PSecu3;
+
+    model PSecu2PA "Full Power Split Device power train using Map-Based components"
+      import Modelica.Constants.*;
+      extends Modelica.Icons.Example;
+      parameter Modelica.Units.SI.AngularVelocity wIceStart=50;
+      Modelica.Units.SI.Energy EbatDel "energy delivered by the battery";
+      Modelica.Units.SI.Energy EgenDelM
+        "energy delivered by gen trough mechanical flange";
+      Modelica.Units.SI.Energy Eroad
+        "mechanical energy absorbed by roas (friction & air)";
+      Modelica.Units.SI.Energy EiceDel "mechanical energy delivered by ice";
+      Modelica.Units.SI.Energy Emot;
+      Modelica.Units.SI.Energy Emass;
+      Modelica.Mechanics.Rotational.Components.IdealPlanetary PSD(ratio = 78 / 30) annotation (
+        Placement(transformation(extent = {{-10, -10}, {10, 10}}, rotation = 0, origin = {-50, 52})));
+      Modelica.Mechanics.Rotational.Components.IdealGear idealGear(ratio = 3.905) annotation (
+        Placement(transformation(extent = {{2, 42}, {22, 62}})));
+      Modelica.Mechanics.Translational.Sensors.SpeedSensor carVel annotation (
+        Placement(transformation(extent = {{-10, -10}, {10, 10}}, rotation = 270, origin = {78, -12})));
+      Modelica.Mechanics.Translational.Components.Mass mass(v(fixed = true, start = 0), m = 1300) annotation (
+        Placement(visible = true, transformation(extent = {{54, 42}, {74, 62}}, rotation = 0)));
+      EHPTlib.SupportModels.Miscellaneous.DragForce dragForce(fc = 0.014, rho = 1.226, S = 2.2, Cx = 0.26, m = mass.m) annotation (
+        Placement(transformation(extent = {{-9, -9}, {9, 9}}, rotation = 90, origin = {89, 29})));
+      EHPTlib.MapBased.IceConnP ice(wIceStart = wIceStart, mapsFileName = "PSDmaps.txt") annotation (
+        Placement(transformation(extent = {{-98, 46}, {-78, 66}})));
+      EHPTlib.SupportModels.Miscellaneous.Batt1Conn bat(ECellMin = 0.9, ECellMax = 1.45, R0Cell = 0.0003, SOCInit = 0.6, ICellMax = 1e5, iCellEfficiency = 15 * 6.5, ns = 100, QCellNom = 2 * 3600.0) annotation (
+        Placement(transformation(extent = {{-10, -10}, {10, 10}}, rotation = 90, origin = {-16, 0})));
+      EHPTlib.SupportModels.ConnectorRelated.Conn d annotation (
+        Placement(visible = true, transformation(extent = {{2, -40}, {28, -16}}, rotation = 0), iconTransformation(extent = {{4, -52}, {30, -28}}, rotation = 0)));
+      EHPTlib.MapBased.ECUs.Ecu2 ECU(genLoopGain = 1.0, socLoopGain = 2e4, powFiltT = 10) annotation (
+        Placement(visible = true, transformation(origin = {-10, -41}, extent = {{-10, -9}, {10, 9}}, rotation = 0)));
+      EHPTlib.MapBased.TwoFlangeConn mot annotation (
+        Placement(visible = true, transformation(extent = {{-28, 62}, {-8, 42}}, rotation = 0)));
+      Modelica.Mechanics.Rotational.Components.IdealRollingWheel wheel(radius = 0.31) annotation (
+        Placement(visible = true, transformation(origin = {38, 52}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+      Modelica.Electrical.Analog.Basic.Ground ground annotation (
+        Placement(visible = true, transformation(origin = {10, 26}, extent = {{10, 10}, {-10, -10}}, rotation = 270)));
+      EHPTlib.MapBased.OneFlangeConn gen annotation (
+        Placement(visible = true, transformation(extent = {{-38, 10}, {-58, 30}}, rotation = 0)));
+      EHPTlib.SupportModels.Miscellaneous.PropDriver driver(yMax = 1.8, CycleFileName = "nedc.txt", k = 1) annotation (
+        Placement(visible = true, transformation(extent = {{-60, -50}, {-40, -30}}, rotation = 0)));
+    equation
+      connect(carVel.flange, mass.flange_b) annotation (
+        Line(points = {{78, -2}, {78, 52}, {74, 52}}, color = {0, 127, 0}));
+      connect(dragForce.flange, mass.flange_b) annotation (
+        Line(points = {{89, 38}, {90, 38}, {90, 52}, {74, 52}}, color = {0, 127, 0}));
+      connect(wheel.flangeT, mass.flange_a) annotation (
+        Line(points = {{48, 52}, {54, 52}}, color = {0, 127, 0}));
+      connect(ECU.tauReference, driver.tauRef) annotation (
+        Line(points = {{-22, -41}, {-29, -41}, {-29, -40}, {-39, -40}}, color = {0, 0, 127}));
+      connect(carVel.v, driver.V) annotation (
+        Line(points = {{78, -23}, {78, -58}, {-50, -58}, {-50, -51.2}}, color = {0, 0, 127}));
+      connect(mot.conn1, ECU.conn1) annotation (
+        Line(points = {{-27.2, 59.8}, {-27.2, 72}, {50, 72}, {50, -20}, {-10, -20}, {-10, -32.18}}, color = {255, 204, 51}, thickness = 0.5));
+      connect(gen.pin_n, bat.n) annotation (
+        Line(points = {{-38, 16}, {-8.5, 16}, {-8.5, 10.1}}, color = {0, 0, 255}));
+      connect(gen.flange_a, PSD.sun) annotation (
+        Line(points = {{-58, 20}, {-58, 20}, {-70, 20}, {-70, 52}, {-60, 52}}));
+      connect(gen.conn, ECU.conn1) annotation (
+        Line(points = {{-58, 12.2}, {-58, -20}, {-10, -20}, {-10, -32.18}}, color = {255, 204, 51}, thickness = 0.5));
+      connect(ground.p, bat.n) annotation (
+        Line(points = {{0, 26}, {-8.5, 26}, {-8.5, 10.1}}, color = {0, 0, 255}));
+      connect(wheel.flangeR, idealGear.flange_b) annotation (
+        Line(points = {{28, 52}, {22, 52}}));
+      connect(PSD.ring, mot.flange_a) annotation (
+        Line(points = {{-40, 52}, {-34, 52}, {-28, 52}}));
+      connect(idealGear.flange_a, mot.flange_b) annotation (
+        Line(points = {{2, 52}, {-4, 52}, {-4, 52.2}, {-8, 52.2}}));
+      connect(mot.pin_p, bat.p) annotation (
+        Line(points = {{-22, 42.2}, {-22, 10}, {-23.75, 10}}, color = {0, 0, 255}));
+      connect(mot.pin_n, bat.n) annotation (
+        Line(points = {{-14, 42}, {-14, 10.1}, {-8.5, 10.1}}, color = {0, 0, 255}));
+      connect(bat.conn, ECU.conn1) annotation (
+        Line(points = {{-15.75, -10}, {-16, -10}, {-16, -20}, {-10, -20}, {-10, -32.18}}, color = {255, 204, 51}, thickness = 0.5));
+      connect(ice.conn, ECU.conn1) annotation (
+        Line(points = {{-88, 45.8}, {-88, 45.8}, {-88, -20}, {-10, -20}, {-10, -32.18}}, color = {255, 204, 51}, thickness = 0.5));
+      connect(ECU.conn1, d) annotation (
+        Line(points = {{-10, -32.18}, {-10, -28}, {15, -28}}, color = {255, 204, 51}, thickness = 0.5));
+      der(EbatDel) = (bat.p.v - bat.n.v) * bat.n.i;
+      der(EgenDelM) = gen.pin_p.i * (gen.pin_p.v - gen.pin_n.v) + gen.flange_a.tau * der(gen.flange_a.phi);
+      der(Eroad) = dragForce.flange.f * der(dragForce.flange.s);
+      der(EiceDel) = -ice.flange_a.tau * der(ice.flange_a.phi);
+      der(Emot) = mot.flange_a.tau * der(mot.flange_a.phi) + mot.flange_b.tau * der(mot.flange_b.phi);
+      Emass = 0.5 * mass.m * der(mass.flange_a.s) ^ 2;
+      connect(PSD.carrier, ice.flange_a) annotation (
+        Line(points = {{-60, 56}, {-78, 56}}, color = {0, 0, 0}, smooth = Smooth.None));
+      connect(gen.pin_p, bat.p) annotation (
+        Line(points = {{-38, 24}, {-38, 34}, {-22, 34}, {-22, 10}, {-23.75, 10}}, color = {0, 0, 255}));
+      annotation (
+        __Dymola_experimentSetupOutput,
+        Documentation(info = "<html>
+<p>Like PSecu2, but solves the Proposed Activity that requires a very small battery and near-CVT (continuosuly-variable Transmission) operation. </p>
+</html>"),
+        Diagram(coordinateSystem(extent = {{-100, -60}, {100, 80}}, preserveAspectRatio = false, initialScale = 0.1, grid = {2, 2})),
+        Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = false, initialScale = 0.1, grid = {2, 2})),
+        experiment(StartTime = 0, StopTime = 1400, Tolerance = 0.0001, Interval = 2.8));
+    end PSecu2PA;
   end PSD;
 
   package VehicleData
@@ -1832,13 +1872,13 @@ Poi con velocità max di 120 km/h")}));
       parameter Real fc = 0.014;
       parameter Real rho = 1.226;
       parameter Real kContr = 100;
-      /* Per il calcolo di J abbiamo usato Tavv=2s, Pn=50kW, Wbase= quella 
-                                                           corrispondente a 36 km/h, quindi 252 rad/s*/
+      /* To compujte J A starting time Tstart=2s was used, Pn=50kW, 
+      Wbase= the one corrisponding to 36 km/h, so 252 rad/s*/
       annotation (
         Icon(coordinateSystem(preserveAspectRatio = false), graphics = {Rectangle(extent = {{-100, 100}, {100, -100}}, lineColor = {162, 29, 33}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid), Text(extent = {{-94, 22}, {96, -16}}, lineColor = {162, 29, 33}, textString = "Car"), Text(extent = {{-100, -104}, {100, -140}}, lineColor = {0, 0, 255}, textString = "%name")}),
         Diagram(coordinateSystem(preserveAspectRatio = false)));
     end Car;
   end VehicleData;
   annotation (
-    uses(Modelica(version = "3.2.3")));
+    uses(Modelica(version="4.0.0"),EHPTlib(version="2.0.0")));
 end EHPTexamples;
