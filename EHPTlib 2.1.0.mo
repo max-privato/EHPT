@@ -362,7 +362,7 @@
         parameter Modelica.Units.SI.Power powMax=50000
           "Maximum mechanical power";
         parameter Modelica.Units.SI.Torque tauMax=400 "Maximum torque ";
-        parameter Modelica.Units.SI.AngularVelocity wMax(min=powMax/tauMax)=
+        parameter Modelica.Units.SI.AngularVelocity wMax=
           1500 "Maximum speed";
         Integer state "=0 below base speed; =1 before wMax; =2 in w limit, =3 above wMax";
         //0 or 1 if tauMax or powMax is delivered; =2 or 3 if w>wMax
