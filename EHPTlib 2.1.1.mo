@@ -378,7 +378,7 @@
           state := 1;
           yH := powMax / w;
         end if;
-//over wMax the torque max is to be rapidly brought to zero
+        //over wMax the torque max is to be rapidly brought to zero
         if w > wMax then
           if w < (1 + alpha) * wMax then
             state := 2;
@@ -468,7 +468,7 @@ Pel"),        Text(
           state := 1;
           yHidealised := powMax / w;
         end if;
-//over wMax the torque max is to be rapidly brought to zero
+        //over wMax the torque max is to be rapidly brought to zero
         if w > wMax then
           if w < (1 + alpha) * wMax then
             state := 2;
@@ -564,25 +564,25 @@ has a 3D icon (e.g., used in Blocks.Logical library).
         parameter Real B = 1 / 2 * rho * S * Cx;
         constant Real f_pos[:,2]=[0,1];
       equation
-//  s = flange.s;
+        //  s = flange.s;
         v = der(s);
         a = der(v);
-// Le seguenti definizioni seguono l'ordine e le richieste del modello "PartialFriction" di
-// Modelica.Mechanics.Translational.Interfaces"
+        // Le seguenti definizioni seguono l'ordine e le richieste del modello "PartialFriction" di
+        // Modelica.Mechanics.Translational.Interfaces"
         v_relfric = v;
         a_relfric = a;
         f0 = A "force at 0 speed 0 but with slip";
         f0_max = A "max force at 0 speed without slip";
         free = false "in principle should become true whenthe wheel loose contact with road";
-// Now the computation of f, and its attribution to the flange:
+        // Now the computation of f, and its attribution to the flange:
         flange.f - f = 0;
-// friction force
+        // friction force
         if v > 0 then
           Sign = 1;
         else
           Sign = -1;
         end if;
-//The following equation equates dragForce to the force applied when locked=true, otherwise term A.
+        //The following equation equates dragForce to the force applied when locked=true, otherwise term A.
         f - B * v ^ 2 * Sign = if locked then sa * unitForce else f0 * (if startForward then Modelica.Math.Vectors.interpolate(f_pos[:, 1], f_pos[:, 2], v, 1) else if startBackward then -Modelica.Math.Vectors.interpolate(f_pos[:, 1], f_pos[:, 2], -v, 1) else if pre(mode) == Forward then Modelica.Math.Vectors.interpolate(f_pos[:, 1], f_pos[:, 2], v, 1) else -Modelica.Math.Vectors.interpolate(f_pos[:, 1], f_pos[:, 2], -v, 1));
 
         /*  
@@ -651,7 +651,7 @@ has a 3D icon (e.g., used in Blocks.Logical library).
               extent={{52,-10},{72,10}},
               rotation=0)));
       initial equation
-//For the meaning of the following if see the definition of dummy
+        //For the meaning of the following if see the definition of dummy
         if extrapolation == Modelica.Blocks.Types.Extrapolation.HoldLastPoint then
           dummy = true;
         else
@@ -793,13 +793,13 @@ has a 3D icon (e.g., used in Blocks.Logical library).
         iBatteryStray = Ip.i;
         iCellStray = iBatteryStray / np;
         EBattery = cBattery.v;
-//Solo per dare maggiore chiarezza all'utente con un nome significativo
+        //Solo per dare maggiore chiarezza all'utente con un nome significativo
         uBat = p.v - n.v;
         powerLoss = R0.LossPower + R1.LossPower + Ip.v * Ip.i;
         ECell = EBattery / ns;
         assert(abs(p.i / np) < ICellMax, "Battery cell current i=" + String(abs(p.i / np)) + "\n exceeds max admissable ICellMax (=" + String(ICellMax) + "A)");
         SOC = (EBattery - EBatteryMin) / (EBatteryMax - EBatteryMin);
-//*(SOCMax-SOCMin)+SOCMin);
+        //*(SOCMax-SOCMin)+SOCMin);
         assert(SOC <= SOCMax, "Battery is fully charged: State of charge reached maximum limit (=" + String(SOCMax) + ")");
         assert(SOCMin <= SOC, "Battery is fully discharged: State of charge reached minimum limit (=" + String(SOCMin) + ")");
         connect(R0.p, currentSensor.p) annotation (
@@ -961,12 +961,12 @@ has a 3D icon (e.g., used in Blocks.Logical library).
         iCellStray = iBatteryStray / np;
         uBat = p.v - n.v;
         eBatt = cBattery.v;
-//Solo per dare maggiore chiarezza all'utente con un nome significativo
+        //Solo per dare maggiore chiarezza all'utente con un nome significativo
         ECell = eBatt / ns;
         powDeliv = (p.v - n.v) * n.i;
         assert(abs(p.i / np) < ICellMax, "Battery cell current i=" + String(abs(p.i / np)) + "\n exceeds max admissable ICellMax (=" + String(ICellMax) + "A)");
         SOC = (eBatt - eBattMin) / (eBattMax - eBattMin);
-//*(SOCMax-SOCMin)+SOCMin);
+        //*(SOCMax-SOCMin)+SOCMin);
         assert(SOC <= SOCMax, "Battery is fully charged: State of charge reached maximum limit (=" + String(SOCMax) + ")");
         assert(SOCMin <= SOC, "Battery is fully discharged: State of charge reached minimum limit (=" + String(SOCMin) + ")");
         connect(R0.p, currentSensor.p) annotation (
@@ -1042,27 +1042,27 @@ has a 3D icon (e.g., used in Blocks.Logical library).
           Placement(transformation(extent = {{28, -10}, {8, 10}})));
       equation
         der(altimetry) = v * sin(sToAngle.y[1]);
-// Let us connect the table which determines angles:
+        // Let us connect the table which determines angles:
         sToAngle.u = flange.s;
-//  s = flange.s;
+        //  s = flange.s;
         v = der(s);
         a = der(v);
-// Le seguenti definizioni seguono l'ordine e le richieste del modello "PartialFriction" di
-// Modelica.Mechanics.Translational.Interfaces"
+        // Le seguenti definizioni seguono l'ordine e le richieste del modello "PartialFriction" di
+        // Modelica.Mechanics.Translational.Interfaces"
         v_relfric = v;
         a_relfric = a;
         f0 = A * cos(angle) + A1 * sin(angle) "Friction force for v_relfric=0 and forward sliding";
         f0_max = A "Maximum friction force for v_relfric=0 and locked";
         free = false "true when there is not wheel-road contact (never!)";
-// Ora il calcolo di dragForce, e la sua attribuzione alla flangia:
+        // Ora il calcolo di dragForce, e la sua attribuzione alla flangia:
         flange.f - dragForce = 0;
-// friction force
+        // friction force
         if v > 0 then
           Sign = 1;
         else
           Sign = -1;
         end if;
-//The following equation equates dragForce to the force applied when locked=true, otherwise term A.
+        //The following equation equates dragForce to the force applied when locked=true, otherwise term A.
         dragForce - B * v ^ 2 * Sign = if locked then sa * unitForce else f0 * (if startForward then Modelica.Math.Vectors.interpolate(mu[:, 1], mu[:, 2], v) else if startBackward then -Modelica.Math.Vectors.interpolate(mu[:, 1], mu[:, 2], -v) else if pre(mode) == Forward then Modelica.Math.Vectors.interpolate(mu[:, 1], mu[:, 2], v) else -Modelica.Math.Vectors.interpolate(mu[:, 1], mu[:, 2], -v));
         annotation (
           Documentation(info = "<html>
@@ -1090,7 +1090,7 @@ has a 3D icon (e.g., used in Blocks.Logical library).
           pc.pin[ph].i + nc.pin[ph].i = 0;
           pc.pin[ph].v = nc.pin[ph].v;
         end for;
-//Aron formula for power (common wire is wire 2):
+        //Aron formula for power (common wire is wire 2):
         y = pc.pin[1].i * (pc.pin[1].v - pc.pin[2].v) + pc.pin[3].i * (pc.pin[3].v - pc.pin[2].v);
         annotation (
           Diagram(coordinateSystem(preserveAspectRatio = false, extent = {{-100, -100}, {100, 100}})),
@@ -3871,8 +3871,14 @@ to ice"),  Ellipse(extent={{-42,98},{50,-44}},       lineColor = {255, 0, 0},
           Placement(transformation(extent = {{-22, 136}, {-2, 156}})));
         Modelica.Electrical.Analog.Basic.Ground groundM1 annotation (
           Placement(transformation(origin = {12, 118}, extent = {{-10, -10}, {10, 10}}, rotation = 270)));
-        SMArelated.MTPAal myMTPA(Umax = 100, Ipm = smpm1.permanentMagnet.Ie, pp = smpm1.p, Rs = smpm1.Rs, Ld = smpm1.Lmd, Lq = smpm1.Lmq) annotation (
-          Placement(visible = true, transformation(extent = {{-50, 136}, {-30, 156}}, rotation = 0)));
+        SMArelated.MTPAal myMTPA(
+          Umax=100,
+          Ipm=smpm1.permanentMagnet.Ie,
+          pp=smpm1.p,
+          Rs=smpm1.Rs,
+          Ld=smpm1.Lmd,
+          Lq=smpm1.Lmq) annotation (Placement(visible=true, transformation(extent={{-50,
+                  136},{-30,156}}, rotation=0)));
         Modelica.Blocks.Continuous.FirstOrder firstOrder1[3](T = 0.2e-4 * {1, 1, 1}) annotation (
           Placement(visible = true, transformation(origin = {16, 146}, extent = {{-8, -8}, {8, 8}}, rotation = 0)));
         Modelica.Blocks.Sources.Trapezoid tqRef(rising = 2, period = 1e6, amplitude = 180, falling = 2, startTime = 1, width = 4) annotation (
@@ -3952,8 +3958,16 @@ to ice"),  Ellipse(extent={{-42,98},{50,-44}},       lineColor = {255, 0, 0},
           Placement(visible = true, transformation(extent={{-38,22},{-18,42}},      rotation = 0)));
         Modelica.Electrical.Analog.Basic.Ground groundM1 annotation (
           Placement(visible = true, transformation(origin={-18,-28},   extent = {{-10, -10}, {10, 10}}, rotation = 270)));
-        EHPTlib.ElectricDrives.SMArelated.MTPAal myMTPA(Ipm = smpm1.permanentMagnet.Ie, Ld = smpm1.Lmd, Lq = smpm1.Lmq, Rs = smpm1.Rs, Umax = 100, gain = 40.0, integTime = 0.5, pp = smpm1.p) annotation (
-          Placement(visible = true, transformation(extent={{-66,22},{-46,42}},      rotation = 0)));
+        EHPTlib.ElectricDrives.SMArelated.MTPAalExperimental myMTPA(
+          Ipm=smpm1.permanentMagnet.Ie,
+          Ld=smpm1.Lmd,
+          Lq=smpm1.Lmq,
+          Rs=smpm1.Rs,
+          Umax=100,
+          gain=40.0,
+          integTime=0.5,
+          pp=smpm1.p) annotation (Placement(visible=true, transformation(extent=
+                 {{-66,22},{-46,42}}, rotation=0)));
         Modelica.Blocks.Continuous.FirstOrder firstOrder1[3](T = 0.2e-4*{1, 1, 1}) annotation (
           Placement(visible = true, transformation(origin={0,32},     extent = {{-8, -8}, {8, 8}}, rotation = 0)));
         Modelica.Blocks.Sources.Constant tqReq(k = 300) annotation (
@@ -4148,18 +4162,18 @@ to ice"),  Ellipse(extent={{-42,98},{50,-44}},       lineColor = {255, 0, 0},
         if Wm < wmBase then
           Tmax = 3 * Kw ^ 2 / (2 * pp * Lstray);
         else
-//The following is 12.11 of FEPE book
+          //The following is 12.11 of FEPE book
           Tmax = 3 * (Kw * wmBase) ^ 2 / (2 * pp * Wm ^ 2 * Lstray);
         end if;
         //Se la coppia richiesta supera la massima mi attesto al deltaW
-//che corrisponde al picco di coppia
-if u > Tmax then
+        //che corrisponde al picco di coppia
+        if u > Tmax then
           Tmax = 3 * Rr * y * Kw ^ 2 / ((pp * y * Lstray) ^ 2 + Rr ^ 2);
-//    y = Rr / (pp*Lstray);
+          //    y = Rr / (pp*Lstray);
           tauIsMax = true;
         elseif u < (-Tmax) then
           -Tmax = 3 * Rr * y * Kw ^ 2 / ((pp * y * Lstray) ^ 2 + Rr ^ 2);
-//    y = -Rr / (pp * Lstray);
+          //    y = -Rr / (pp * Lstray);
           tauIsMax = true;
         else
           /* La seguente riga è eq. 12.14 di FEPE Book. Naturalmente essa 
@@ -4178,7 +4192,7 @@ if u > Tmax then
         Si riporta comunque qui sotto un'implementazione provvisoria con coppia 
         valida in tutte le regioni, da ultimare e verificare:
         */
-//u=3*(Kw*wmBase)^2*Rr*y/(y^2*pp^2*(Wm+y)^2*Lstray^2+Rr^2*(Wm+y));
+          //u=3*(Kw*wmBase)^2*Rr*y/(y^2*pp^2*(Wm+y)^2*Lstray^2+Rr^2*(Wm+y));
           tauIsMax = false;
         end if;
         annotation (
@@ -4337,8 +4351,8 @@ because of roundoff errors. This justifies abs()")}),
         Modelica.Blocks.Interfaces.RealInput uDC "DC voltage" annotation (
           Placement(transformation(extent = {{-140, -20}, {-100, 20}})));
       equation
-//Computations with full flux.
-//Computation of  Id, Iq, Vd, Vq, V
+        //Computations with full flux.
+        //Computation of  Id, Iq, Vd, Vq, V
         IparkFF = torqueReq / (1.5 * pp * Psi);
         IdFF = 0;
         IqFF = IparkFF;
@@ -4347,8 +4361,8 @@ because of roundoff errors. This justifies abs()")}),
         VparkFF = sqrt(VdFF ^ 2 + VqFF ^ 2);
         if VparkFF < Ulim then
           weakening = 0;
-//weakening should be boolean. It is assumed to be real because otherwise this
-//model will not work under OpenModelica 1.9.2.
+          //weakening should be boolean. It is assumed to be real because otherwise this
+          //model will not work under OpenModelica 1.9.2.
           0 = gammaStar;
           Id = IdFF;
           Iq = IqFF;
@@ -4357,15 +4371,15 @@ because of roundoff errors. This justifies abs()")}),
           Vpark = VparkFF;
         else
           weakening = 1;
-//weakening should be boolean. It is assumed to be real because otherwise this
-//model will not work under OpenModelica 1.9.2.
+          //weakening should be boolean. It is assumed to be real because otherwise this
+          //model will not work under OpenModelica 1.9.2.
           Id = -Ipark * sin(gammaStar);
           Iq = Ipark * cos(gammaStar);
           Vd = Rs * Id - w * Ld * Iq;
           Vq = Rs * Iq + w * (Psi + Ld * Id);
           Vpark = sqrt(Vd ^ 2 + Vq ^ 2);
           Vpark = Ulim;
-//   gammaFilt+tauFilt*der(gammaFilt)=gammaStar;
+          //   gammaFilt+tauFilt*der(gammaFilt)=gammaStar;
         end if;
         torqueReq = 1.5 * pp * Psi * Ipark * cos(gammaStar);
         assert(gammaStar < 0.98 * PI / 2, "\n***\nmaximum gamma reached\n***\n");
@@ -4595,11 +4609,11 @@ because of roundoff errors. This justifies abs()")}),
         Modelica.Blocks.Interfaces.RealOutput Ipark annotation (
           Placement(transformation(extent = {{-10, -10}, {10, 10}}, rotation = 90, origin = {0, 110}), iconTransformation(extent = {{-10, -10}, {10, 10}}, rotation = 90, origin = {0, 110})));
       equation
-//Computations with full flux.
-//The following two equations determine IparkFF and gammaFF:
+        //Computations with full flux.
+        //The following two equations determine IparkFF and gammaFF:
         0 = (-Psi * sin(gammaFF)) + (Lq - Ld) * IparkFF * cos(2 * gammaFF);
         torqueReq = 1.5 * pp * (Psi * IparkFF * cos(gammaFF) + (Lq - Ld) / 2 * IparkFF ^ 2 * sin(2 * gammaFF));
-//Computation of  Id, Iq, Vd, Vq, V
+        //Computation of  Id, Iq, Vd, Vq, V
         IdFF = -IparkFF * sin(gammaFF);
         IqFF = IparkFF * cos(gammaFF);
         VdFF = Rs * IdFF - w * Lq * IqFF;
@@ -4607,8 +4621,8 @@ because of roundoff errors. This justifies abs()")}),
         VparkFF = max(1e-12,sqrt(VdFF ^ 2 + VqFF ^ 2));
       if VparkFF < Ulim then
           weakening = 0;
-//weakening should be boolean. It is assumed to be real because otherwise this
-//model will not work under OpenModelica 1.9.2.
+          //weakening should be boolean. It is assumed to be real because otherwise this
+          //model will not work under OpenModelica 1.9.2.
           0 = (-Psi * sin(gammaStar)) + (Lq - Ld) * IparkFF * cos(2 * gammaStar);
           Id = IdFF;
           Iq = IqFF;
@@ -4617,18 +4631,18 @@ because of roundoff errors. This justifies abs()")}),
           Vpark = VparkFF;
         else
           weakening = 1;
-//weakening should be boolean. It is assumed to be real because otherwise this
-//model will not work under OpenModelica 1.9.2.
+          //weakening should be boolean. It is assumed to be real because otherwise this
+          //model will not work under OpenModelica 1.9.2.
           Id = -Ipark * sin(gammaStar);
           Iq = Ipark * cos(gammaStar);
           Vd = Rs * Id - w * Lq * Iq;
           Vq = Rs * Iq + w * (Psi + Ld * Id);
           Vpark = sqrt(Vd ^ 2 + Vq ^ 2);
           Vpark = Ulim;
-//   gammaFilt+tauFilt*der(gammaFilt)=gammaStar;
+          //   gammaFilt+tauFilt*der(gammaFilt)=gammaStar;
         end if;
-//  T1 = 1.5*pp*Psi*Ipark*cos(gammaFilt);
-//  T2 = 1.5*pp*(Lq - Ld)/2*Ipark^2*sin(2*gammaFilt);
+        //  T1 = 1.5*pp*Psi*Ipark*cos(gammaFilt);
+        //  T2 = 1.5*pp*(Lq - Ld)/2*Ipark^2*sin(2*gammaFilt);
         T1 = 1.5 * pp * Psi * Ipark * cos(gammaStar);
         T2 = 1.5 * pp * (Lq - Ld) / 2 * Ipark ^ 2 * sin(2 * gammaStar);
         torqueReq = T1 + T2;
@@ -4638,7 +4652,7 @@ because of roundoff errors. This justifies abs()")}),
           experiment(StartTime = 0, StopTime = 8, Tolerance = 0.0001, Interval = 0.0016));
       end MTPAa;
 
-      model MTPAal
+      model MTPAalExperimental
         "MTPA logic for an anisotropic PMSM machine with current limitation"
         // Non-Ascii Symbol to cause UTF-8 saving by Dymola: €
         parameter Modelica.Units.SI.Time integTime = 2;
@@ -4711,7 +4725,98 @@ because of roundoff errors. This justifies abs()")}),
         connect(pi.u, feedback.y) annotation (
           Line(points={{60,60},{72,60},{72,24},{57,24}},          color = {0, 0, 127}, pattern = LinePattern.Solid));
         annotation (
-          Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = false, initialScale = 0.1, grid = {2, 2}), graphics={  Text(textColor = {0, 0, 127}, extent = {{-100, 142}, {100, 106}}, textString = "%name"), Rectangle(lineColor = {0, 0, 127}, fillColor = {255, 255, 255}, pattern = LinePattern.Solid, fillPattern = FillPattern.Solid, extent = {{-100, 100}, {100, -100}}), Text(textColor = {0, 0, 127}, extent = {{-100, 24}, {100, -26}}, textString = "MTPAal")}),
+          Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = false, initialScale = 0.1, grid = {2, 2}), graphics={  Text(textColor = {0, 0, 127}, extent = {{-100, 142}, {100, 106}}, textString = "%name"), Rectangle(lineColor = {0, 0, 127}, fillColor = {255, 255, 255}, pattern = LinePattern.Solid, fillPattern = FillPattern.Solid, extent = {{-100, 100}, {100, -100}}), Text(textColor = {0, 0, 127}, extent={{-102,62},
+                    {98,12}},                                                                                                                                                                                                        textString = "MTPAal"),
+              Text(
+                extent={{-100,-42},{100,-66}},
+                textColor={238,46,47},
+                textString="experimental")}),
+          Diagram(coordinateSystem(extent = {{-100, -80}, {100, 80}}, preserveAspectRatio = false)),
+          experiment(StartTime = 0, StopTime = 8, Tolerance = 0.0001, Interval = 0.0016),
+          Documentation(info="<html>
+<p><span style=\"font-size: 12pt;\">This is an experimental version used only for SmaALlSpeeds. Operation of PI controller not well calibrated for all applications, since it lacks antiwindup.</span></p>
+</html>"));
+      end MTPAalExperimental;
+
+      model MTPAal
+        "MTPA logic for an anisotropic PMSM machine with current limitation"
+        // Non-Ascii Symbol to cause UTF-8 saving by Dymola: €
+        parameter Real gain(unit = "Nm/A") = 5000 / (1.5 * Ipm * pp) "Current loop gain";
+        parameter Modelica.Units.SI.Current Ipm=1.5 "Permanent magnet current";
+        parameter Integer pp = 1 "Pole pairs";
+        parameter Modelica.Units.SI.Resistance Rs=0.02 "Stator resistance (Ω)";
+        parameter Modelica.Units.SI.Inductance Ld=0.4
+          "Basic direct-axis inductance (H)";
+        parameter Modelica.Units.SI.Inductance Lq=1.1
+          "Basic quadrature-axis inductance (H)";
+        parameter Modelica.Units.SI.Voltage Umax=100
+          "Max rms voltage per phase to the motor";
+        parameter Modelica.Units.SI.Current Ilim=100
+          "nominal current (rms per phase)";
+        Modelica.Blocks.Interfaces.RealInput torqueReq annotation (
+          Placement(transformation(extent = {{-140, 40}, {-100, 80}}), iconTransformation(extent = {{-140, 40}, {-100, 80}})));
+        Modelica.Blocks.Interfaces.RealInput wMech annotation (
+          Placement(transformation(extent = {{-140, -80}, {-100, -40}}), iconTransformation(extent = {{-140, -80}, {-100, -40}})));
+        Modelica.Blocks.Interfaces.RealOutput Id annotation (
+          Placement(transformation(extent = {{100, 50}, {120, 70}}), iconTransformation(extent = {{100, 50}, {120, 70}})));
+        Modelica.Blocks.Interfaces.RealOutput Iq annotation (
+          Placement(transformation(extent = {{100, -70}, {120, -50}}), iconTransformation(extent = {{100, -70}, {120, -50}})));
+        Modelica.Blocks.Interfaces.RealInput uDC "DC voltage" annotation (
+          Placement(transformation(extent = {{-140, -20}, {-100, 20}}), iconTransformation(extent = {{-140, -20}, {-100, 20}})));
+        MTPAa mTPAa(
+          Ipm=Ipm,
+          pp=pp,
+          Rs=Rs,
+          Ld=Ld,
+          Lq=Lq,
+          Umax=Umax)
+          annotation (Placement(transformation(extent={{6,-36},{26,-16}})));
+        Modelica.Blocks.Math.Feedback feedback annotation (
+          Placement(visible = true, transformation(extent = {{38, 14}, {58, 34}}, rotation = 0)));
+        Modelica.Blocks.Sources.Constant Ilim_(k = IlimPk) annotation (
+          Placement(visible = true, transformation(origin = {48, 0}, extent = {{10, -10}, {-10, 10}}, rotation = -90)));
+        Modelica.Blocks.Continuous.FirstOrder firstOrder(T = 0.01, k = gain) annotation (
+          Placement(visible = true, transformation(extent = {{60, 50}, {40, 70}}, rotation = 0)));
+        Modelica.Blocks.Nonlinear.Limiter limiter1(uMax = 1e99, uMin = 0) annotation (
+          Placement(visible = true, transformation(origin = {6, 60}, extent = {{10, -10}, {-10, 10}}, rotation = 0)));
+        Modelica.Blocks.Math.Add add1(k1 = -1) annotation (
+          Placement(visible = true, transformation(origin = {-34, 8}, extent = {{-10, -10}, {10, 10}}, rotation = -90)));
+        Modelica.Blocks.Continuous.FirstOrder firstOrder1(T = 0.01, k = 1) annotation (
+          Placement(visible = true, transformation(extent = {{-74, 50}, {-54, 70}}, rotation = 0)));
+        Modelica.Blocks.Logical.GreaterThreshold limiting(threshold = IlimPk / 1e6) annotation (
+          Placement(visible = true, transformation(extent = {{-14, 18}, {6, 38}}, rotation = 0)));
+      protected
+        parameter Modelica.Units.SI.Current IlimPk=sqrt(2)*Ilim
+          "current limit (A peak)";
+      equation
+        connect(firstOrder1.y, add1.u2) annotation (
+          Line(points = {{-53, 60}, {-40, 60}, {-40, 20}}, color = {0, 0, 127}));
+        connect(firstOrder1.u, torqueReq) annotation (
+          Line(points = {{-76, 60}, {-120, 60}}, color = {0, 0, 127}));
+        connect(limiting.u, add1.u1) annotation (
+          Line(points = {{-16, 28}, {-28, 28}, {-28, 20}}, color = {0, 0, 127}));
+        connect(add1.y, mTPAa.torqueReq) annotation (
+          Line(points = {{-34, -3}, {-34, -20}, {4, -20}}, color = {0, 0, 127}));
+        connect(limiter1.y, add1.u1) annotation (
+          Line(points = {{-5, 60}, {-28, 60}, {-28, 20}}, color = {0, 0, 127}));
+        connect(firstOrder.y, limiter1.u) annotation (
+          Line(points = {{39, 60}, {18, 60}}, color = {0, 0, 127}));
+        connect(firstOrder.u, feedback.y) annotation (
+          Line(points = {{62, 60}, {72, 60}, {72, 24}, {57, 24}}, color = {0, 0, 127}));
+        connect(feedback.u1, mTPAa.Ipark) annotation (
+          Line(points = {{40, 24}, {16, 24}, {16, -15}}, color = {0, 0, 127}));
+        connect(Ilim_.y, feedback.u2) annotation (
+          Line(points = {{48, 11}, {48, 16}}, color = {0, 0, 127}));
+        connect(mTPAa.uDC, uDC) annotation (
+          Line(points = {{4, -26}, {-68, -26}, {-68, 0}, {-120, 0}}, color = {0, 0, 127}));
+        connect(mTPAa.wMech, wMech) annotation (
+          Line(points = {{4, -32}, {4, -32}, {-34, -32}, {-34, -60}, {-120, -60}}, color = {0, 0, 127}));
+        connect(mTPAa.Id, Id) annotation (
+          Line(points = {{27, -20}, {27, -20}, {86, -20}, {86, 60}, {110, 60}}, color = {0, 0, 127}));
+        connect(mTPAa.Iq, Iq) annotation (
+          Line(points = {{27, -32}, {27, -32}, {86, -32}, {86, -60}, {110, -60}}, color = {0, 0, 127}));
+        annotation (
+          Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = false, initialScale = 0.1, grid = {2, 2}), graphics={  Text(extent = {{-100, 142}, {100, 106}}, lineColor = {0, 0, 127}, textString = "%name"), Rectangle(extent = {{-100, 100}, {100, -100}}, lineColor = {0, 0, 127}, fillColor = {255, 255, 255}, fillPattern = FillPattern.Solid), Text(extent = {{-100, 24}, {100, -26}}, lineColor = {0, 0, 127}, textString = "MTPAal")}),
           Diagram(coordinateSystem(extent = {{-100, -80}, {100, 80}}, preserveAspectRatio = false)),
           experiment(StartTime = 0, StopTime = 8, Tolerance = 0.0001, Interval = 0.0016));
       end MTPAal;
